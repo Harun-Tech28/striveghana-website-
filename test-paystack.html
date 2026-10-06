@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Paystack Payment</title>
+    <script src="https://js.paystack.co/v1/inline.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        button {
+            background: #00C853;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 20px;
+        }
+        button:hover {
+            background: #00A843;
+        }
+        .info {
+            background: #E3F2FD;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            border-left: 4px solid #2196F3;
+        }
+        .status {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 5px;
+            display: none;
+        }
+        .success {
+            background: #C8E6C9;
+            border-left: 4px solid #4CAF50;
+            color: #2E7D32;
+        }
+        .error {
+            background: #FFCDD2;
+            border-left: 4px solid #F44336;
+            color: #C62828;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🧪 Test Paystack Payment</h1>
+        
+        <div class="info">
+            <strong>Test Card Details:</strong><br>
+            Card Number: 4084 0840 8408 4081<br>
+            Expiry: 12/25<br>
+            CVV: 123
+        </div>
+
+        <p><strong>Your Paystack Key:</strong> pk_test_573f55ec926ffe2953741d0e71614fc17768ddc5</p>
+        
+        <button onclick="payWithPaystack()">Test Payment - $25</button>
+        
+        <div id="status" class="status"></div>
+    </div>
+
+    <script>
+        function payWithPaystack() {
+            const statusDiv = document.getElementById('status');
+            statusDiv.style.display = 'none';
+            
+            const handler = PaystackPop.setup({
+                key: 'pk_test_573f55ec926ffe2953741d0e71614fc17768ddc5',
+                email: 'test@example.com',
+                amount: 40000, // $25 * 16 (GHS rate) * 100 (kobo)
+                currency: 'GHS',
+                ref: 'TEST-' + Math.floor((Math.random() * 1000000000) + 1),
+                metadata: {
+                    custom_fields: [
+                        {
+                            display_name: "Test Payment",
+                            variable_name: "test",
+                            value: "Testing channel activation"
+                        }
+                    ]
+                },
+                callback: function(response) {
+                    statusDiv.className = 'status success';
+                    statusDiv.style.display = 'block';
+                    statusDiv.innerHTML = '<strong>✅ SUCCESS!</strong><br>Payment channels are activated!<br>Reference: ' + response.reference;
+                    console.log('Success:', response);
+                },
+                onClose: function() {
+                    statusDiv.className = 'status error';
+                    statusDiv.style.display = 'block';
+                    statusDiv.innerHTML = '<strong>❌ Payment Closed</strong><br>If you saw an error about "no active channel", payment channels are NOT activated yet.';
+                }
+            });
+            
+            try {
+                handler.openIframe();
+            } catch (error) {
+                statusDiv.className = 'status error';
+                statusDiv.style.display = 'block';
+                statusDiv.innerHTML = '<strong>❌ ERROR:</strong><br>' + error.message;
+                console.error('Error:', error);
+            }
+        }
+    </script>
+</body>
+</html>

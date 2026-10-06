@@ -1,0 +1,6 @@
+Deployment triggered at: 2024-01-20
+All Learn More links have been fixed and point to valid pages.
+Changes include:
+- Program cards on home page now link to /programs
+- Program cards on programs page now link to /contact
+- All other Learn More buttons verified and working
