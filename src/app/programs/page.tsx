@@ -107,7 +107,7 @@ export default function ProgramsPage() {
                       <ul className="space-y-1.5">
                         {program.activities.map((act, i) => (
                           <li key={i} className="text-xs sm:text-sm text-gray-700 flex items-start space-x-2">
-                            <Check size={14} className="text-emerald-700 flex-shrink-0 mt-0.5" />
+                            <Check size={14} className="text-amber-600 flex-shrink-0 mt-0.5" />
                             <span>{act}</span>
                           </li>
                         ))}
@@ -136,7 +136,7 @@ export default function ProgramsPage() {
                         href={`https://wa.me/${contact.whatsapp}?text=${encodeURIComponent(`Salam Alaykum, I would like to join the ${program.title} program in Ejisu.`)}`}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center space-x-1.5 px-4 py-2 bg-emerald-700 hover:bg-emerald-800 text-white rounded-md text-xs font-medium transition-colors"
+                        className="inline-flex items-center space-x-1.5 px-4 py-2 bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold rounded-lg text-xs transition-colors shadow-xs"
                       >
                         <MessageCircle size={14} />
                         <span>Register via WhatsApp</span>

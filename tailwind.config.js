@@ -8,23 +8,51 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        // Clean authentic gold sampled from user (#BC9646)
+        gold: {
+          50: '#FAF8F3',
+          100: '#F4EEDF',
+          200: '#E8DCBE',
+          300: '#DAC89C',
+          400: '#CCB273',
+          500: '#BC9646',   // User's exact sampled clean gold
+          600: '#A58136',   // Rich dark gold for text and hover
+          700: '#886827',   // Deep gold for high-contrast reading
+          800: '#684E1A',
+          900: '#4A360E',
+          950: '#2A1E05',
+        },
+        // Map amber directly to this clean gold palette so all existing amber-* classes instantly render this clean gold
+        amber: {
+          50: '#FAF8F3',
+          100: '#F4EEDF',
+          200: '#E8DCBE',
+          300: '#DAC89C',
+          400: '#CCB273',
+          500: '#BC9646',   // Exact sampled clean gold (#BC9646)
+          600: '#A58136',
+          700: '#886827',
+          800: '#684E1A',
+          900: '#4A360E',
+          950: '#2A1E05',
+        },
         primary: {
-          50: '#f0fdf4',
-          100: '#dcfce7',
-          200: '#bbf7d0',
-          300: '#86efac',
-          400: '#4ade80',
-          500: '#1e7b48',   // Vibrant balanced Islamic emerald
-          600: '#166534',   // Deep rich Islamic forest green
-          700: '#14532d',   // Classic dignified emerald
-          800: '#0f3f22',   // Premium forest shade
-          900: '#0b291a',   // Master dark spruce / pine
-          950: '#06170e',   // Deepest velvet forest
+          50: '#FAF8F3',
+          100: '#F4EEDF',
+          200: '#E8DCBE',
+          300: '#DAC89C',
+          400: '#CCB273',
+          500: '#BC9646',
+          600: '#A58136',
+          700: '#886827',
+          800: '#684E1A',
+          900: '#4A360E',
+          950: '#2A1E05',
         },
         accent: {
-          gold: '#cba135',
-          'gold-light': '#dfbc5c',
-          'gold-dark': '#a67c1e',
+          gold: '#BC9646',
+          'gold-light': '#DAC89C',
+          'gold-dark': '#A58136',
         },
         secondary: {
           blue: '#1E5A7D',

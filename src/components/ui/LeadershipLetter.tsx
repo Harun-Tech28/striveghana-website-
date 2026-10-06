@@ -18,11 +18,11 @@ export default function LeadershipLetter() {
           
           {/* Header */}
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-6 border-b border-gray-100 text-xs sm:text-sm">
-            <span className="font-bold text-emerald-800 uppercase tracking-widest bg-emerald-50 px-3 py-1 rounded-full border border-emerald-200 w-fit">
+            <span className="font-bold text-amber-800 uppercase tracking-widest bg-amber-50 px-3 py-1 rounded-full border border-amber-200 w-fit">
               From the Ejisuman Center
             </span>
             <div className="flex items-center space-x-2 text-gray-500 font-medium">
-              <MapPin size={15} className="text-emerald-700" />
+              <MapPin size={15} className="text-amber-600" />
               <span>99 BLK IX Ejisuman (Near Family Hospital)</span>
             </div>
           </div>
@@ -39,7 +39,7 @@ export default function LeadershipLetter() {
 
           {/* Arabic Salutation */}
           <div className="py-1">
-            <p className="text-emerald-950 font-serif italic text-lg sm:text-xl border-l-4 border-emerald-700 pl-4 py-1 bg-emerald-50/50 rounded-r-lg">
+            <p className="text-slate-900 font-serif italic text-lg sm:text-xl border-l-4 border-amber-500 pl-4 py-2 bg-amber-50/40 rounded-r-lg">
               "{letter.salutation}"
             </p>
           </div>
@@ -62,7 +62,7 @@ export default function LeadershipLetter() {
               <h3 className="text-xl font-bold text-gray-900 mt-1 font-heading">
                 {letter.authorName}
               </h3>
-              <p className="text-sm font-medium text-emerald-800">
+              <p className="text-sm font-semibold text-amber-800">
                 {letter.authorRole}
               </p>
               <p className="text-xs text-gray-500 mt-0.5">
@@ -76,7 +76,7 @@ export default function LeadershipLetter() {
                 href="https://wa.me/233542524571?text=Salam%20Alaykum%20Dr.%20Salis,%20I%20read%20your%20letter%20on%20the%20Strive%20website%20and%20would%20like%20to%20connect."
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center space-x-2 px-6 py-3 bg-emerald-700 hover:bg-emerald-800 text-white rounded-xl text-sm sm:text-base font-semibold shadow-xs transition-all hover:-translate-y-0.5"
+                className="inline-flex items-center space-x-2 px-6 py-3 bg-amber-500 hover:bg-amber-600 text-slate-950 rounded-xl text-sm sm:text-base font-bold shadow-xs transition-all hover:-translate-y-0.5"
               >
                 <MessageCircle size={16} />
                 <span>WhatsApp Dr. Salis</span>

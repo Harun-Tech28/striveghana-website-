@@ -247,8 +247,8 @@ function DonationFormInner() {
       >
       {/* Form Header */}
       <div className="text-center mb-6">
-        <div className="w-10 h-10 bg-primary-50 text-primary-800 rounded-md flex items-center justify-center mx-auto mb-3 border border-primary-100">
-          <Heart className="w-5 h-5 text-primary-700" />
+        <div className="w-10 h-10 bg-amber-50 text-amber-800 rounded-md flex items-center justify-center mx-auto mb-3 border border-amber-200">
+          <Heart className="w-5 h-5 text-amber-600" />
         </div>
         <h3 className="text-xl sm:text-2xl font-bold font-heading text-gray-900 tracking-tight">
           Make a Donation
@@ -268,7 +268,7 @@ function DonationFormInner() {
             }}
             className={`px-4 py-1.5 rounded-lg text-xs font-bold transition-all ${
               currency === 'GHS'
-                ? 'bg-white text-primary-900 shadow-sm'
+                ? 'bg-white text-slate-900 shadow-sm'
                 : 'text-gray-500 hover:text-gray-900'
             }`}
           >
@@ -283,7 +283,7 @@ function DonationFormInner() {
             }}
             className={`px-4 py-1.5 rounded-lg text-xs font-bold transition-all ${
               currency === 'USD'
-                ? 'bg-white text-primary-900 shadow-sm'
+                ? 'bg-white text-slate-900 shadow-sm'
                 : 'text-gray-500 hover:text-gray-900'
             }`}
           >
@@ -309,7 +309,7 @@ function DonationFormInner() {
                 key={type.value}
                 className={`flex items-center justify-center p-3 rounded-xl border text-xs font-semibold cursor-pointer text-center transition-all ${
                   watchDonationType === type.value
-                    ? 'border-primary-600 bg-primary-50 text-primary-800 ring-1 ring-primary-500 shadow-sm'
+                    ? 'border-amber-600 bg-amber-50 text-amber-900 ring-1 ring-amber-500 shadow-sm'
                     : 'border-gray-200 hover:border-gray-300 text-gray-700'
                 }`}
               >
@@ -428,7 +428,7 @@ function DonationFormInner() {
             <label
               className={`p-3.5 rounded-xl border-2 cursor-pointer transition-all flex items-center space-x-3 ${
                 watchPaymentMethod === 'paystack'
-                  ? 'border-primary-600 bg-primary-50 ring-1 ring-primary-500'
+                  ? 'border-amber-600 bg-amber-50 ring-1 ring-amber-500'
                   : 'border-gray-200 hover:border-gray-300'
               }`}
             >
@@ -438,7 +438,7 @@ function DonationFormInner() {
                 {...register('paymentMethod')}
                 className="sr-only"
               />
-              <CreditCard className="w-5 h-5 text-primary-600 flex-shrink-0" />
+              <CreditCard className="w-5 h-5 text-amber-600 flex-shrink-0" />
               <div>
                 <p className="text-xs font-bold text-gray-900">Card & Mobile Money</p>
                 <p className="text-[10px] text-gray-500">Paystack Instant Checkout</p>

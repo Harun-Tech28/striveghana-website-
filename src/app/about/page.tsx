@@ -51,7 +51,7 @@ export default function AboutPage() {
       <section className="py-20 sm:py-28 bg-white border-b border-gray-200">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
           <div className="space-y-4 max-w-3xl">
-            <span className="text-xs sm:text-sm font-bold uppercase tracking-widest text-emerald-800 bg-emerald-50 px-3.5 py-1.5 rounded-full border border-emerald-200 inline-block">
+            <span className="text-xs sm:text-sm font-bold uppercase tracking-widest text-amber-800 bg-amber-50 px-3.5 py-1.5 rounded-full border border-amber-200 inline-block">
               Our Community Roots
             </span>
             <h2 className="text-3xl sm:text-5xl font-extrabold font-heading text-gray-900 tracking-tight">
@@ -111,7 +111,7 @@ export default function AboutPage() {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
             <div className="p-8 sm:p-10 rounded-2xl bg-[#fafafa] border border-gray-200 shadow-xs space-y-4">
-              <span className="text-xs sm:text-sm font-bold uppercase tracking-widest text-emerald-800 bg-emerald-100/70 px-3.5 py-1.5 rounded-full border border-emerald-200 inline-block">
+              <span className="text-xs sm:text-sm font-bold uppercase tracking-widest text-amber-800 bg-amber-100/70 px-3.5 py-1.5 rounded-full border border-amber-200 inline-block">
                 Our Purpose
               </span>
               <h3 className="text-2xl sm:text-3xl font-bold font-heading text-gray-900">
@@ -141,7 +141,7 @@ export default function AboutPage() {
       <section className="py-20 sm:py-28 bg-[#fbfbf9] border-b border-gray-200">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mb-12">
-            <span className="text-xs sm:text-sm font-bold uppercase tracking-widest text-emerald-800 bg-emerald-50 px-3.5 py-1.5 rounded-full border border-emerald-200 inline-block mb-3">
+            <span className="text-xs sm:text-sm font-bold uppercase tracking-widest text-amber-800 bg-amber-50 px-3.5 py-1.5 rounded-full border border-amber-200 inline-block mb-3">
               Operational Framework
             </span>
             <h2 className="text-3xl sm:text-5xl font-extrabold font-heading text-gray-900 tracking-tight">
@@ -160,7 +160,7 @@ export default function AboutPage() {
               >
                 <div>
                   <div className="flex items-center space-x-3 mb-3">
-                    <span className="w-10 h-10 rounded-xl bg-emerald-800 text-white font-bold text-lg flex items-center justify-center font-heading">
+                    <span className="w-10 h-10 rounded-xl bg-amber-500 text-slate-950 font-black text-lg flex items-center justify-center font-heading">
                       {pillar.letter}
                     </span>
                     <h3 className="text-xl font-bold text-gray-900 font-heading">
@@ -184,7 +184,7 @@ export default function AboutPage() {
       <section className="py-20 sm:py-28 bg-white border-b border-gray-200">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mb-12">
-            <span className="text-xs sm:text-sm font-bold uppercase tracking-widest text-emerald-800 bg-emerald-50 px-3.5 py-1.5 rounded-full border border-emerald-200 inline-block mb-3">
+            <span className="text-xs sm:text-sm font-bold uppercase tracking-widest text-amber-800 bg-amber-50 px-3.5 py-1.5 rounded-full border border-amber-200 inline-block mb-3">
               Objectives & Focus
             </span>
             <h2 className="text-3xl sm:text-5xl font-extrabold font-heading text-gray-900 tracking-tight">
@@ -198,7 +198,7 @@ export default function AboutPage() {
           <div className="space-y-4">
             {coreObjectives.map((obj, idx) => (
               <div key={idx} className="p-6 rounded-2xl bg-gray-50/70 border border-gray-200 flex items-start space-x-5 hover:bg-white hover:shadow-xs transition-all">
-                <span className="text-xl font-extrabold text-emerald-800 font-mono flex-shrink-0 mt-0.5">
+                <span className="text-xl font-extrabold text-amber-800 font-mono flex-shrink-0 mt-0.5">
                   0{obj.number}
                 </span>
                 <div>
@@ -221,7 +221,7 @@ export default function AboutPage() {
           <div className="bg-white rounded-2xl p-8 sm:p-12 border border-gray-200 shadow-sm">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
               <div className="space-y-5">
-                <span className="text-xs sm:text-sm font-bold uppercase tracking-widest text-emerald-800 bg-emerald-50 px-3.5 py-1.5 rounded-full border border-emerald-200 inline-block">
+                <span className="text-xs sm:text-sm font-bold uppercase tracking-widest text-amber-800 bg-amber-50 px-3.5 py-1.5 rounded-full border border-amber-200 inline-block">
                   Visiting Us
                 </span>
                 <h2 className="text-3xl sm:text-4xl font-extrabold font-heading text-gray-900">
@@ -233,15 +233,15 @@ export default function AboutPage() {
                 
                 <div className="space-y-3 text-base text-gray-600 pt-2">
                   <div className="flex items-start space-x-3">
-                    <MapPin size={20} className="text-emerald-700 flex-shrink-0 mt-0.5" />
+                    <MapPin size={20} className="text-amber-700 flex-shrink-0 mt-0.5" />
                     <span>{contact.address.street}, {contact.address.town}, Ashanti Region</span>
                   </div>
                   <div className="flex items-center space-x-3">
-                    <Phone size={18} className="text-emerald-700 flex-shrink-0" />
+                    <Phone size={18} className="text-amber-700 flex-shrink-0" />
                     <span>Call: <strong className="text-gray-900">{contact.phoneDisplay}</strong></span>
                   </div>
                   <div className="flex items-center space-x-3">
-                    <MessageCircle size={18} className="text-emerald-700 flex-shrink-0" />
+                    <MessageCircle size={18} className="text-amber-700 flex-shrink-0" />
                     <span>WhatsApp: <strong className="text-gray-900">{contact.phoneDisplay}</strong></span>
                   </div>
                 </div>

@@ -37,7 +37,7 @@ export default function StriveLogo({
         className={`relative flex-shrink-0 rounded-full overflow-hidden transition-all duration-300 transform group-hover:scale-105 shadow-sm ${
           isLight 
             ? 'ring-2 ring-amber-400 bg-white' 
-            : 'ring-2 ring-emerald-600/40 hover:ring-amber-400 bg-white'
+            : 'ring-2 ring-amber-500/40 hover:ring-amber-400 bg-white'
         } ${size === 'md' ? 'w-9 h-9 sm:w-11 sm:h-11' : ''}`}
         style={size !== 'md' ? { width: dimensions.img, height: dimensions.img } : undefined}
       >
@@ -72,7 +72,7 @@ export default function StriveLogo({
           </div>
           <span
             className={`font-medium tracking-wider uppercase mt-0.5 sm:mt-1 ${dimensions.sub} hidden sm:block ${
-              isLight ? 'text-slate-300' : 'text-emerald-700'
+              isLight ? 'text-slate-300' : 'text-amber-700'
             }`}
           >
             Youth & Convert Support

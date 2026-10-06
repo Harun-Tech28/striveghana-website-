@@ -11,32 +11,32 @@ export default function BentoWhyStrive() {
         
         {/* Section Heading */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center space-x-2 bg-emerald-50 border border-emerald-200 px-4 py-1.5 rounded-full text-emerald-800 text-xs font-semibold uppercase tracking-wider mb-4">
-            <Compass size={14} className="text-emerald-600" />
+          <div className="inline-flex items-center space-x-2 bg-amber-50 border border-amber-200 px-4 py-1.5 rounded-full text-amber-800 text-xs font-semibold uppercase tracking-wider mb-4">
+            <Compass size={14} className="text-amber-600" />
             <span>Why StriveGhana Exists</span>
           </div>
-          <h2 className="text-3xl md:text-5xl font-bold font-heading text-primary-700 tracking-tight mb-4">
+          <h2 className="text-3xl md:text-5xl font-bold font-heading text-slate-900 tracking-tight mb-4">
             Building Faith, Knowledge & Belonging
           </h2>
           <p className="text-base sm:text-lg text-gray-600 leading-relaxed">
             New converts and young Muslims face real spiritual confusion, isolation, and economic hurdles. We answer with dedicated mentorship and unwavering brotherhood.
           </p>
-          <div className="w-20 h-1 bg-accent-gold mx-auto mt-6 rounded-full"></div>
+          <div className="w-20 h-1 bg-amber-500 mx-auto mt-6 rounded-full"></div>
         </div>
 
         {/* Bento Grid Layout */}
         <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-12 gap-6">
           
           {/* Card 1: Large Feature - New Muslim Care (Span 7) */}
-          <div className="lg:col-span-7 bg-gradient-to-br from-primary-800 to-primary-700 rounded-3xl overflow-hidden shadow-xl text-white relative flex flex-col justify-between group">
+          <div className="lg:col-span-7 bg-gradient-to-br from-slate-900 to-slate-950 rounded-3xl overflow-hidden shadow-xl text-white relative flex flex-col justify-between group">
             <div className="absolute inset-0 bg-cover bg-center opacity-30 group-hover:scale-105 transition-transform duration-700"
               style={{ backgroundImage: `url('/images/men-new-muslim.jpg')` }}
             ></div>
-            <div className="absolute inset-0 bg-gradient-to-t from-primary-950 via-primary-900/80 to-primary-800/60"></div>
+            <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-900/90 to-slate-900/70"></div>
             
             <div className="p-8 sm:p-10 relative z-10 space-y-4">
-              <span className="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-md px-3.5 py-1.5 rounded-full text-xs font-semibold text-accent-gold border border-white/10">
-                <Heart size={14} className="fill-accent-gold" />
+              <span className="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-md px-3.5 py-1.5 rounded-full text-xs font-semibold text-amber-300 border border-white/10">
+                <Heart size={14} className="fill-amber-400" />
                 <span>Core Mission: New Muslim Care</span>
               </span>
               <h3 className="text-2xl sm:text-4xl font-bold font-heading text-white tracking-tight">
@@ -50,7 +50,7 @@ export default function BentoWhyStrive() {
             <div className="p-8 sm:p-10 pt-0 relative z-10 flex flex-wrap items-center gap-4">
               <Link
                 href="/programs"
-                className="inline-flex items-center space-x-2 px-6 py-3 bg-accent-gold hover:bg-accent-gold-dark text-white font-bold rounded-xl text-sm transition-all shadow-md"
+                className="inline-flex items-center space-x-2 px-6 py-3 bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold rounded-xl text-sm transition-all shadow-md"
               >
                 <span>Explore Convert Programs</span>
                 <ArrowRight size={16} />
@@ -82,15 +82,15 @@ export default function BentoWhyStrive() {
 
               <div className="space-y-2 pt-2 text-xs text-gray-700 font-medium">
                 <div className="flex items-center space-x-2">
-                  <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
+                  <span className="w-2 h-2 rounded-full bg-amber-500"></span>
                   <span>Direct Mobile Money Giving (MTN MoMo, Telecel)</span>
                 </div>
                 <div className="flex items-center space-x-2">
-                  <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
+                  <span className="w-2 h-2 rounded-full bg-amber-500"></span>
                   <span>Paystack Certified Secure Checkout</span>
                 </div>
                 <div className="flex items-center space-x-2">
-                  <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
+                  <span className="w-2 h-2 rounded-full bg-amber-500"></span>
                   <span>Quarterly Public Financial Accountability Reports</span>
                 </div>
               </div>
@@ -117,7 +117,7 @@ export default function BentoWhyStrive() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
               <div className="absolute bottom-4 left-6 right-6 text-white">
-                <div className="inline-flex items-center space-x-2 text-accent-gold text-xs font-bold mb-1">
+                <div className="inline-flex items-center space-x-2 text-amber-300 text-xs font-bold mb-1">
                   <BookOpen size={14} />
                   <span>Weekend Islamic Academy</span>
                 </div>
@@ -133,7 +133,7 @@ export default function BentoWhyStrive() {
               </p>
               <Link
                 href="/programs"
-                className="inline-flex items-center space-x-2 text-primary-600 font-bold text-xs uppercase tracking-wider hover:text-primary-700"
+                className="inline-flex items-center space-x-2 text-amber-700 font-bold text-xs uppercase tracking-wider hover:text-amber-800"
               >
                 <span>View Class Timetables</span>
                 <ArrowRight size={14} />
@@ -151,7 +151,7 @@ export default function BentoWhyStrive() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
               <div className="absolute bottom-4 left-6 right-6 text-white">
-                <div className="inline-flex items-center space-x-2 text-emerald-300 text-xs font-bold mb-1">
+                <div className="inline-flex items-center space-x-2 text-amber-300 text-xs font-bold mb-1">
                   <Users size={14} />
                   <span>Youth Empowerment</span>
                 </div>
@@ -167,7 +167,7 @@ export default function BentoWhyStrive() {
               </p>
               <Link
                 href="/get-involved"
-                className="inline-flex items-center space-x-2 text-primary-600 font-bold text-xs uppercase tracking-wider hover:text-primary-700"
+                className="inline-flex items-center space-x-2 text-amber-700 font-bold text-xs uppercase tracking-wider hover:text-amber-800"
               >
                 <span>Join Youth Circles</span>
                 <ArrowRight size={14} />

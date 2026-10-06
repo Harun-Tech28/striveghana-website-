@@ -40,12 +40,12 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #f59e0b;
+  background: #bc9646;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #d97706;
+  background: #a58136;
 }
 
 /* Professional button styles */
@@ -53,17 +53,17 @@ body {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background-color: #f59e0b;
+  background-color: #bc9646;
   color: #0f172a;
   font-weight: 700;
   padding: 0.7rem 1.4rem;
   border-radius: 0.75rem;
   transition: all 0.2s ease;
-  box-shadow: 0 4px 14px 0 rgba(245, 158, 11, 0.25);
+  box-shadow: 0 4px 14px 0 rgba(188, 150, 70, 0.28);
 }
 
 .btn-primary:hover {
-  background-color: #d97706;
+  background-color: #a58136;
   color: #ffffff;
   transform: translateY(-1px);
 }
@@ -99,9 +99,9 @@ body {
 }
 
 .btn-outline:hover {
-  background-color: #fef3c7;
-  border-color: #f59e0b;
-  color: #92400e;
+  background-color: #faf8f3;
+  border-color: #bc9646;
+  color: #886827;
 }
 
 .btn-outline-white {
@@ -118,18 +118,18 @@ body {
 }
 
 .btn-outline-white:hover {
-  background-color: #f59e0b;
+  background-color: #bc9646;
   color: #0f172a;
-  border-color: #f59e0b;
+  border-color: #bc9646;
 }
 
 /* Accessible focus ring and brand text selection */
 :focus-visible {
-  outline: 2px solid #f59e0b;
+  outline: 2px solid #bc9646;
   outline-offset: 2px;
 }
 
 ::selection {
-  background-color: #f59e0b;
-  color: #0f172a;
+  background-color: #bc9646;
+  color: #ffffff;
 }
