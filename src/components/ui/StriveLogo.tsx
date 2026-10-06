@@ -34,12 +34,12 @@ export default function StriveLogo({
     <div className={`inline-flex items-center space-x-3 group ${className}`}>
       {/* Official Circular Logo with subtle glow and golden border */}
       <div 
-        className={`relative flex-shrink-0 rounded-full overflow-hidden transition-all duration-300 transform group-hover:scale-105 shadow-md ${
+        className={`relative flex-shrink-0 rounded-full overflow-hidden transition-all duration-300 transform group-hover:scale-105 shadow-sm ${
           isLight 
-            ? 'ring-2 ring-accent-gold/80 bg-white' 
-            : 'ring-2 ring-primary-600/40 hover:ring-accent-gold bg-white'
-        }`}
-        style={{ width: dimensions.img, height: dimensions.img }}
+            ? 'ring-2 ring-amber-400 bg-white' 
+            : 'ring-2 ring-emerald-600/40 hover:ring-amber-400 bg-white'
+        } ${size === 'md' ? 'w-9 h-9 sm:w-11 sm:h-11' : ''}`}
+        style={size !== 'md' ? { width: dimensions.img, height: dimensions.img } : undefined}
       >
         <Image
           src="/images/striveghana-logo.png"
@@ -53,24 +53,26 @@ export default function StriveLogo({
 
       {showText && (
         <div className="flex flex-col leading-none">
-          <div className="flex items-center space-x-2">
+          <div className="flex items-center space-x-1.5 sm:space-x-2">
             <span
-              className={`font-heading font-extrabold tracking-tight ${dimensions.title} ${
-                isLight ? 'text-white' : 'text-primary-800'
-              }`}
+              className={`font-heading font-extrabold tracking-tight ${
+                size === 'md' ? 'text-base sm:text-xl' : dimensions.title
+              } ${isLight ? 'text-white' : 'text-slate-900'}`}
             >
-              Strive<span className="text-accent-gold">Ghana</span>
+              Strive<span className="text-amber-500">Ghana</span>
             </span>
 
             {showArabic && (
-              <span className={`arabic-text font-bold text-accent-gold ${dimensions.arabic}`}>
+              <span className={`arabic-text font-bold text-amber-500 ${
+                size === 'md' ? 'text-xs sm:text-sm' : dimensions.arabic
+              }`}>
                 السعي
               </span>
             )}
           </div>
           <span
-            className={`font-medium tracking-wider uppercase mt-1 ${dimensions.sub} ${
-              isLight ? 'text-gray-300' : 'text-primary-600'
+            className={`font-medium tracking-wider uppercase mt-0.5 sm:mt-1 ${dimensions.sub} hidden sm:block ${
+              isLight ? 'text-slate-300' : 'text-emerald-700'
             }`}
           >
             Youth & Convert Support

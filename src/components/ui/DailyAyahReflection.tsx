@@ -41,17 +41,17 @@ export default function DailyAyahReflection() {
   }
 
   return (
-    <div className="bg-[#0b291a] rounded-xl p-6 sm:p-8 text-white border border-[#17432b]" id="daily-reflection">
+    <div className="bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 rounded-2xl p-6 sm:p-8 text-white border border-slate-800 shadow-lg" id="daily-reflection">
       <div className="space-y-6">
         
         {/* Header Bar */}
-        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 pb-5 border-b border-[#17432b]">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 pb-5 border-b border-slate-800">
           <div className="flex items-center space-x-3">
-            <div className="w-9 h-9 rounded-md bg-[#0f3f22] text-accent-gold flex items-center justify-center text-sm border border-[#17432b]">
-              <BookOpen size={18} />
+            <div className="w-10 h-10 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center text-sm border border-amber-500/20">
+              <BookOpen size={20} />
             </div>
             <div>
-              <span className="text-xs sm:text-sm font-semibold uppercase tracking-wider text-accent-gold block">
+              <span className="text-xs sm:text-sm font-bold uppercase tracking-wider text-amber-400 block">
                 Daily Quranic Reflection
               </span>
               <h3 className="text-base sm:text-lg font-bold text-white font-heading mt-0.5">
@@ -64,10 +64,10 @@ export default function DailyAyahReflection() {
             <button
               type="button"
               onClick={toggleAudio}
-              className={`inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-md text-xs sm:text-sm font-medium transition-colors ${
+              className={`inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-xl text-xs sm:text-sm font-semibold transition-all ${
                 isPlaying 
-                  ? 'bg-accent-gold text-gray-900 font-semibold' 
-                  : 'bg-[#0f3f22] hover:bg-[#14532d] text-gray-200 border border-[#17432b]'
+                  ? 'bg-amber-500 text-slate-950' 
+                  : 'bg-slate-800/80 hover:bg-slate-800 text-slate-200 border border-slate-700'
               }`}
             >
               {isPlaying ? <VolumeX size={15} /> : <Volume2 size={15} />}
@@ -77,7 +77,7 @@ export default function DailyAyahReflection() {
             <button
               type="button"
               onClick={shareReflection}
-              className="inline-flex items-center space-x-1.5 px-3 py-1.5 bg-[#0f3f22] hover:bg-[#14532d] text-gray-200 rounded-md text-xs sm:text-sm font-medium border border-[#17432b] transition-colors"
+              className="inline-flex items-center space-x-1.5 px-3 py-1.5 bg-slate-800/80 hover:bg-slate-800 text-slate-200 rounded-xl text-xs sm:text-sm font-semibold border border-slate-700 transition-all"
               title="Share this Ayah"
             >
               {copied ? <Check size={15} className="text-emerald-400" /> : <Share2 size={15} />}
@@ -88,19 +88,19 @@ export default function DailyAyahReflection() {
 
         {/* Arabic Ayah */}
         <div className="text-center py-2 space-y-4">
-          <div className="text-2xl sm:text-4xl font-arabic text-accent-gold leading-relaxed font-normal">
+          <div className="text-2xl sm:text-4xl font-arabic text-amber-300 leading-relaxed font-normal">
             {reflection.ayahArabic}
           </div>
-          <div className="text-base sm:text-lg text-gray-200 font-serif italic max-w-2xl mx-auto leading-relaxed">
+          <div className="text-base sm:text-lg text-slate-200 font-serif italic max-w-2xl mx-auto leading-relaxed">
             "{reflection.ayahTranslation}"
           </div>
-          <p className="text-xs sm:text-sm font-medium text-emerald-300">
+          <p className="text-xs sm:text-sm font-semibold text-emerald-400">
             — {reflection.surahReference}
           </p>
         </div>
 
         {/* Reflection Note */}
-        <div className="p-4 bg-[#082014] rounded-md border border-[#17432b] text-sm sm:text-base text-gray-300 leading-relaxed">
+        <div className="p-4 sm:p-5 bg-slate-900/90 rounded-xl border border-slate-800 text-sm sm:text-base text-slate-300 leading-relaxed">
           <strong className="text-white block mb-1">Community Context:</strong>
           {reflection.reflectionText}
         </div>

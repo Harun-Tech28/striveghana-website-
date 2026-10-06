@@ -34,29 +34,29 @@ export default function ZakatCalculator() {
   return (
     <div className="bg-white rounded-lg border border-gray-200 overflow-hidden shadow-xs" id="zakat-calculator">
       {/* Header Bar */}
-      <div className="bg-[#0b291a] p-5 sm:p-6 text-white border-b border-[#17432b]">
+      <div className="bg-slate-950 p-5 sm:p-6 text-white border-b border-slate-800">
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
           <div>
-            <span className="text-xs sm:text-sm font-semibold text-accent-gold uppercase tracking-wider block mb-1">
+            <span className="text-xs sm:text-sm font-semibold text-amber-400 uppercase tracking-wider block mb-1">
               Annual 2.5% Calculation
             </span>
             <h3 className="text-xl sm:text-2xl font-bold font-heading text-white">
               Zakat Calculator
             </h3>
-            <p className="text-sm text-gray-300 mt-1 max-w-xl">
+            <p className="text-sm text-slate-300 mt-1 max-w-xl">
               Calculate your annual Zakat obligation according to Islamic guidelines.
             </p>
           </div>
 
           {/* Currency Selector */}
-          <div className="flex items-center bg-[#0f3f22] p-1 rounded-md border border-[#17432b]">
+          <div className="flex items-center bg-slate-900 p-1 rounded-xl border border-slate-800">
             <button
               type="button"
               onClick={() => setCurrency('GHS')}
-              className={`px-3 py-1 rounded text-xs font-medium transition-colors ${
+              className={`px-3 py-1 rounded-lg text-xs font-semibold transition-colors ${
                 currency === 'GHS' 
-                  ? 'bg-accent-gold text-gray-900 font-bold' 
-                  : 'text-gray-300 hover:text-white'
+                  ? 'bg-amber-500 text-slate-950 font-bold' 
+                  : 'text-slate-300 hover:text-white'
               }`}
             >
               GH₵ (Cedi)

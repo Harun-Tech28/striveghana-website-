@@ -20,32 +20,32 @@ export default function Footer() {
   }
 
   return (
-    <footer className="bg-[#0b291a] text-gray-300 border-t border-[#17432b]">
+    <footer className="bg-slate-950 text-slate-300 border-t border-slate-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-12">
         {/* Main 4-Column Layout */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-12 pb-12 border-b border-[#17432b]">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-12 pb-12 border-b border-slate-800">
           
           {/* Column 1: Identity & Purpose (Span 4) */}
           <div className="lg:col-span-4 space-y-4">
             <StriveLogo size="lg" variant="light" />
 
-            <p className="text-gray-300 text-sm sm:text-base leading-relaxed">
+            <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
               Strive is a community-driven Muslim youth initiative based in Ejisuman, Ashanti Region. We walk beside young Muslims and new converts, offering practical guidance, education, and supportive brotherhood.
             </p>
 
-            <div className="text-xs sm:text-sm text-gray-300 space-y-1 pt-1">
-              <span className="font-semibold text-accent-gold block">The STRIVE Meaning:</span>
+            <div className="text-xs sm:text-sm text-slate-400 space-y-1 pt-1">
+              <span className="font-semibold text-amber-400 block">The STRIVE Meaning:</span>
               <span>Support • Teach • Reach • Inspire • Value • Empower</span>
             </div>
 
             {/* Newsletter */}
             <div className="pt-2">
-              <p className="text-xs sm:text-sm font-semibold text-gray-200 uppercase tracking-wider mb-2">
+              <p className="text-xs sm:text-sm font-semibold text-slate-200 uppercase tracking-wider mb-2">
                 Monthly Community Updates
               </p>
               {subscribed ? (
-                <div className="p-2.5 bg-[#0f3f22] rounded-md text-xs sm:text-sm text-emerald-300 flex items-center space-x-2 border border-[#17432b]">
-                  <Check size={14} className="text-accent-gold" />
+                <div className="p-3 bg-emerald-950/80 rounded-xl text-xs sm:text-sm text-emerald-300 flex items-center space-x-2 border border-emerald-800">
+                  <Check size={14} className="text-amber-400" />
                   <span>Thank you for subscribing.</span>
                 </div>
               ) : (
@@ -56,11 +56,11 @@ export default function Footer() {
                     value={newsletterEmail}
                     onChange={(e) => setNewsletterEmail(e.target.value)}
                     placeholder="Enter your email"
-                    className="px-3.5 py-2.5 bg-[#0f3f22] border border-[#17432b] rounded-md text-sm text-white placeholder-gray-400 focus:outline-none focus:border-accent-gold flex-1 transition-colors"
+                    className="px-3.5 py-2.5 bg-slate-900 border border-slate-800 rounded-xl text-sm text-white placeholder-slate-500 focus:outline-none focus:border-emerald-500 flex-1 transition-colors"
                   />
                   <button
                     type="submit"
-                    className="px-4 py-2.5 bg-primary-600 hover:bg-primary-500 text-white rounded-md text-sm font-semibold transition-colors flex items-center space-x-1"
+                    className="px-4 py-2.5 bg-emerald-600 hover:bg-emerald-500 text-white rounded-xl text-sm font-semibold transition-colors flex items-center space-x-1 shadow-sm"
                   >
                     <span>Subscribe</span>
                     <ArrowRight size={14} />
@@ -149,14 +149,14 @@ export default function Footer() {
             </h3>
             <div className="space-y-2.5 text-xs text-gray-400">
               <div className="flex items-start space-x-2">
-                <MapPin size={15} className="text-accent-gold flex-shrink-0 mt-0.5" />
+                <MapPin size={15} className="text-amber-400 flex-shrink-0 mt-0.5" />
                 <span className="leading-relaxed">
                   {organizationData.contact.address.street}, {organizationData.contact.address.town}, Ashanti Region, Ghana
                 </span>
               </div>
 
               <div className="flex items-center space-x-2">
-                <Phone size={14} className="text-accent-gold flex-shrink-0" />
+                <Phone size={14} className="text-amber-400 flex-shrink-0" />
                 <a href={`tel:${organizationData.contact.phone}`} className="hover:text-white transition-colors">
                   {organizationData.contact.phoneDisplay}
                 </a>
@@ -175,7 +175,7 @@ export default function Footer() {
               </div>
 
               <div className="flex items-center space-x-2">
-                <Mail size={14} className="text-accent-gold flex-shrink-0" />
+                <Mail size={14} className="text-amber-400 flex-shrink-0" />
                 <a href={`mailto:${organizationData.contact.email}`} className="hover:text-white transition-colors">
                   {organizationData.contact.email}
                 </a>

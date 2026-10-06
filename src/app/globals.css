@@ -7,16 +7,10 @@
   --font-arabic: 'Amiri', 'Traditional Arabic', serif;
 }
 
-/* Base font size increase across the entire project for optimal human legibility */
+/* Standard responsive base font size */
 html {
-  font-size: 17.5px;
+  font-size: 16px;
   scroll-behavior: smooth;
-}
-
-@media (min-width: 1024px) {
-  html {
-    font-size: 18.5px;
-  }
 }
 
 body {
@@ -24,6 +18,7 @@ body {
   background-color: #faf8f5;
   font-family: var(--font-inter), 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   overflow-x: hidden;
+  max-width: 100vw;
   line-height: 1.6;
 }
 
@@ -45,12 +40,12 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #1e7b48;
+  background: #059669;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #14532d;
+  background: #047857;
 }
 
 /* Professional button styles */
@@ -58,32 +53,32 @@ body {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background-color: #14532d;
+  background-color: #059669;
   color: #ffffff;
   font-weight: 600;
   padding: 0.7rem 1.4rem;
-  border-radius: 0.5rem;
-  transition: background-color 0.15s ease, transform 0.15s ease;
+  border-radius: 0.75rem;
+  transition: all 0.2s ease;
 }
 
 .btn-primary:hover {
-  background-color: #0b291a;
+  background-color: #047857;
 }
 
 .btn-secondary {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background-color: #cba135;
+  background-color: #d97706;
   color: #ffffff;
   font-weight: 600;
   padding: 0.7rem 1.4rem;
-  border-radius: 0.5rem;
-  transition: background-color 0.15s ease;
+  border-radius: 0.75rem;
+  transition: all 0.2s ease;
 }
 
 .btn-secondary:hover {
-  background-color: #a67c1e;
+  background-color: #b45309;
 }
 
 .btn-outline {
@@ -94,9 +89,9 @@ body {
   color: #1f2937;
   font-weight: 600;
   padding: 0.7rem 1.4rem;
-  border-radius: 0.5rem;
+  border-radius: 0.75rem;
   background-color: transparent;
-  transition: background-color 0.15s ease, color 0.15s ease;
+  transition: all 0.2s ease;
 }
 
 .btn-outline:hover {
@@ -111,23 +106,23 @@ body {
   color: #ffffff;
   font-weight: 600;
   padding: 0.7rem 1.4rem;
-  border-radius: 0.5rem;
+  border-radius: 0.75rem;
   background-color: transparent;
-  transition: background-color 0.15s ease, color 0.15s ease;
+  transition: all 0.2s ease;
 }
 
 .btn-outline-white:hover {
   background-color: #ffffff;
-  color: #14532d;
+  color: #047857;
 }
 
 /* Accessible focus ring and brand text selection */
 :focus-visible {
-  outline: 2px solid #14532d;
+  outline: 2px solid #059669;
   outline-offset: 2px;
 }
 
 ::selection {
-  background-color: #14532d;
+  background-color: #059669;
   color: #ffffff;
 }

@@ -40,12 +40,12 @@ const Header = () => {
   return (
     <>
       {/* Top Utility Bar */}
-      <div className="bg-[#0b291a] text-gray-200 text-xs sm:text-sm py-2 px-4 border-b border-[#17432b] hidden sm:block">
+      <div className="bg-slate-900 text-gray-200 text-xs sm:text-sm py-2 px-4 border-b border-slate-800 hidden sm:block">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <div className="flex items-center space-x-3 text-gray-300">
-            <span className="font-medium text-white">Strive Ghana</span>
-            <span>•</span>
-            <span>{organizationData.motto}</span>
+            <span className="font-semibold text-white">Strive Ghana</span>
+            <span className="text-slate-600">•</span>
+            <span className="text-slate-300">{organizationData.motto}</span>
           </div>
 
           <div className="flex items-center space-x-5 text-gray-300">
@@ -53,20 +53,20 @@ const Header = () => {
               href={`tel:${organizationData.contact.phone}`}
               className="hover:text-white transition-colors flex items-center"
             >
-              <Phone size={13} className="mr-1.5 text-accent-gold" />
+              <Phone size={13} className="mr-1.5 text-amber-400" />
               <span>{organizationData.contact.phoneDisplay}</span>
             </a>
             <a
               href={`https://wa.me/${organizationData.contact.whatsapp}?text=${encodeURIComponent("Salam Alaykum, I am reaching out from the Strive Ghana website.")}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-emerald-300 transition-colors flex items-center text-emerald-400"
+              className="hover:text-emerald-300 transition-colors flex items-center text-emerald-400 font-medium"
             >
               <MessageCircle size={13} className="mr-1.5" />
               <span>WhatsApp</span>
             </a>
             <span className="flex items-center text-gray-300">
-              <MapPin size={13} className="mr-1 text-accent-gold" />
+              <MapPin size={13} className="mr-1 text-amber-400" />
               <span>Ejisu, Ashanti Region</span>
             </span>
           </div>
@@ -76,13 +76,15 @@ const Header = () => {
       {/* Main Navbar */}
       <header 
         className={`sticky top-0 z-40 bg-white transition-shadow duration-200 ${
-          isScrolled ? 'shadow-sm border-b border-gray-200' : 'border-b border-gray-100'
+          isScrolled ? 'shadow-md border-b border-gray-200' : 'border-b border-gray-100'
         }`}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-18 py-3">
+        <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center h-16 sm:h-18 py-2.5 sm:py-3">
             {/* Brand Logo */}
-            <StriveLogo size="md" variant="dark" />
+            <div className="flex-shrink-0">
+              <StriveLogo size="md" variant="dark" />
+            </div>
 
             {/* Desktop Navigation */}
             <nav className="hidden md:flex items-center space-x-1 lg:space-x-2">
@@ -92,10 +94,10 @@ const Header = () => {
                   <Link
                     key={item.href}
                     href={item.href}
-                    className={`px-3.5 py-2 rounded-md text-sm font-medium transition-colors ${
+                    className={`px-3.5 py-2 rounded-lg text-sm font-medium transition-colors ${
                       active
-                        ? 'text-primary-700 bg-primary-50 font-semibold'
-                        : 'text-gray-700 hover:text-primary-700 hover:bg-gray-50'
+                        ? 'text-emerald-700 bg-emerald-50 font-bold'
+                        : 'text-gray-700 hover:text-emerald-700 hover:bg-gray-50'
                     }`}
                   >
                     {item.label}
@@ -106,7 +108,7 @@ const Header = () => {
               <div className="pl-3">
                 <Link
                   href="/donate"
-                  className="inline-flex items-center space-x-1.5 bg-primary-700 hover:bg-primary-800 text-white font-medium py-2 px-4 rounded-md text-sm transition-colors shadow-sm"
+                  className="inline-flex items-center space-x-1.5 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-2 px-4 rounded-xl text-sm transition-all shadow-sm hover:shadow hover:-translate-y-0.5"
                 >
                   <Heart size={14} className="fill-white" />
                   <span>Donate</span>
@@ -115,16 +117,16 @@ const Header = () => {
             </nav>
 
             {/* Mobile menu trigger */}
-            <div className="flex items-center space-x-2 md:hidden">
+            <div className="flex items-center space-x-1.5 sm:space-x-2 md:hidden">
               <Link
                 href="/donate"
-                className="bg-primary-700 text-white text-xs font-medium py-2 px-3 rounded-md flex items-center space-x-1"
+                className="bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold py-2 px-2.5 sm:px-3 rounded-lg flex items-center space-x-1 shadow-xs"
               >
-                <Heart size={13} className="fill-white" />
+                <Heart size={12} className="fill-white" />
                 <span>Donate</span>
               </Link>
               <button
-                className="p-2 rounded-md text-gray-700 hover:bg-gray-100 transition-colors focus:outline-none"
+                className="p-2 rounded-lg text-gray-700 hover:bg-gray-100 transition-colors focus:outline-none"
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
                 aria-label="Toggle navigation menu"
               >
@@ -144,9 +146,9 @@ const Header = () => {
                   <Link
                     key={item.href}
                     href={item.href}
-                    className={`px-3 py-2.5 rounded-md text-sm font-medium transition-colors ${
+                    className={`px-3 py-2.5 rounded-lg text-sm font-medium transition-colors ${
                       active
-                        ? 'text-primary-700 bg-primary-50 font-semibold'
+                        ? 'text-emerald-700 bg-emerald-50 font-bold'
                         : 'text-gray-700 hover:bg-gray-50'
                     }`}
                     onClick={() => setIsMenuOpen(false)}
@@ -160,11 +162,11 @@ const Header = () => {
             <div className="pt-3 border-t border-gray-100 space-y-2">
               <Link
                 href="/donate"
-                className="w-full py-2.5 bg-primary-700 text-white font-medium rounded-md text-sm flex items-center justify-center space-x-2"
+                className="w-full py-3 bg-emerald-600 text-white font-bold rounded-xl text-sm flex items-center justify-center space-x-2 shadow-xs"
                 onClick={() => setIsMenuOpen(false)}
               >
                 <Heart size={15} className="fill-white" />
-                <span>Support Our Programs</span>
+                <span>Support Our Programs (Donate)</span>
               </Link>
 
               <div className="grid grid-cols-2 gap-2 pt-1 text-xs">
@@ -172,14 +174,14 @@ const Header = () => {
                   href={`https://wa.me/${organizationData.contact.whatsapp}?text=${encodeURIComponent("Salam Alaykum, I am reaching out from the Strive Ghana website.")}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-2 bg-emerald-50 text-emerald-800 rounded-md font-medium flex items-center justify-center space-x-1 border border-emerald-100"
+                  className="p-2.5 bg-emerald-50 text-emerald-800 rounded-xl font-semibold flex items-center justify-center space-x-1 border border-emerald-200"
                 >
                   <MessageCircle size={14} />
                   <span>WhatsApp</span>
                 </a>
                 <a
                   href={`tel:${organizationData.contact.phone}`}
-                  className="p-2 bg-gray-50 text-gray-800 rounded-md font-medium flex items-center justify-center space-x-1 border border-gray-200"
+                  className="p-2.5 bg-gray-50 text-gray-800 rounded-xl font-semibold flex items-center justify-center space-x-1 border border-gray-200"
                 >
                   <Phone size={14} />
                   <span>Call Us</span>

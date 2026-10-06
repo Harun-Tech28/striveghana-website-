@@ -41,15 +41,15 @@ export default function CommunityFloatingWidget() {
     <div className="fixed bottom-5 right-5 z-40">
       {/* Expanded Dialog Card */}
       {isOpen && (
-        <div className="mb-3 w-[320px] sm:w-[360px] bg-white rounded-xl shadow-2xl border border-gray-200 overflow-hidden animate-in fade-in slide-in-from-bottom-2 duration-200">
+        <div className="mb-3 w-[calc(100vw-2.5rem)] max-w-sm bg-white rounded-2xl shadow-2xl border border-gray-200 overflow-hidden animate-in fade-in slide-in-from-bottom-2 duration-200">
           {/* Header */}
-          <div className="bg-[#0b291a] p-4 text-white border-b border-[#17432b]">
+          <div className="bg-slate-900 p-4 text-white border-b border-slate-800">
             <div className="flex items-center justify-between">
               <div>
                 <h4 className="font-bold text-sm">
                   Strive Ghana Community Desk
                 </h4>
-                <p className="text-xs text-accent-gold mt-0.5 font-medium">
+                <p className="text-xs text-amber-400 mt-0.5 font-medium">
                   Ejisuman Center • {phoneDisplay}
                 </p>
               </div>
@@ -72,15 +72,15 @@ export default function CommunityFloatingWidget() {
               <button
                 key={idx}
                 onClick={() => openWhatsApp(item.message)}
-                className="w-full text-left p-2.5 bg-white rounded-lg border border-gray-200 hover:border-primary-600 hover:bg-emerald-50/40 transition-colors block text-xs group"
+                className="w-full text-left p-2.5 bg-white rounded-xl border border-gray-200 hover:border-emerald-600 hover:bg-emerald-50/50 transition-colors block text-xs group"
               >
                 <div className="flex items-center justify-between">
-                  <span className="font-medium text-gray-900 group-hover:text-primary-800 transition-colors">{item.title}</span>
+                  <span className="font-medium text-gray-900 group-hover:text-emerald-800 transition-colors">{item.title}</span>
                   <div className="flex items-center space-x-1">
                     <span className="text-[10px] text-gray-500 bg-gray-100 px-1.5 py-0.5 rounded font-mono">
                       {item.tag}
                     </span>
-                    <ArrowUpRight size={12} className="text-gray-400 group-hover:text-primary-700" />
+                    <ArrowUpRight size={12} className="text-gray-400 group-hover:text-emerald-700" />
                   </div>
                 </div>
               </button>
@@ -89,7 +89,7 @@ export default function CommunityFloatingWidget() {
             <div className="pt-2 border-t border-gray-200 space-y-2">
               <button
                 onClick={() => openWhatsApp()}
-                className="w-full py-2.5 px-3 bg-primary-700 hover:bg-[#0b291a] text-white rounded-md font-semibold text-xs flex items-center justify-center space-x-1.5 transition-colors shadow-xs"
+                className="w-full py-2.5 px-3 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl font-semibold text-xs flex items-center justify-center space-x-1.5 transition-colors shadow-xs"
               >
                 <MessageCircle size={15} />
                 <span>Open WhatsApp Chat</span>
@@ -97,9 +97,9 @@ export default function CommunityFloatingWidget() {
 
               <a
                 href={`tel:${organizationData.contact.phone}`}
-                className="w-full py-2 px-3 bg-white hover:bg-gray-100 text-gray-800 border border-gray-200 rounded-md font-medium text-xs flex items-center justify-center space-x-1.5 transition-colors text-center block"
+                className="w-full py-2 px-3 bg-white hover:bg-gray-100 text-gray-800 border border-gray-200 rounded-xl font-medium text-xs flex items-center justify-center space-x-1.5 transition-colors text-center block"
               >
-                <Phone size={13} className="text-primary-700 inline mr-1" />
+                <Phone size={13} className="text-emerald-700 inline mr-1" />
                 <span>Call Center: {phoneDisplay}</span>
               </a>
             </div>
@@ -110,14 +110,14 @@ export default function CommunityFloatingWidget() {
       {/* Floating Trigger Button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="h-12 px-4 rounded-full bg-[#0b291a] hover:bg-primary-700 text-white shadow-xl flex items-center space-x-2 border border-[#17432b] transition-all hover:scale-105 focus:outline-none focus:ring-2 focus:ring-accent-gold"
+        className="h-12 px-4 rounded-full bg-emerald-700 hover:bg-emerald-600 text-white shadow-xl flex items-center space-x-2 border border-emerald-600 transition-all hover:scale-105 focus:outline-none focus:ring-2 focus:ring-amber-400"
         aria-label="Contact Strive Ghana Community Desk"
       >
         {isOpen ? (
           <X size={18} />
         ) : (
           <>
-            <MessageCircle size={18} className="text-accent-gold" />
+            <MessageCircle size={18} className="text-amber-300" />
             <span className="text-xs font-semibold tracking-wide hidden sm:inline">Connect With Us</span>
           </>
         )}
