@@ -38,7 +38,7 @@ export default function CommunityFloatingWidget() {
   }
 
   return (
-    <div className="fixed bottom-16 sm:bottom-5 right-4 sm:right-5 z-40">
+    <div className="hidden sm:block fixed bottom-5 right-5 z-40">
       {/* Expanded Dialog Card */}
       {isOpen && (
         <div className="mb-3 w-[calc(100vw-2.5rem)] max-w-sm bg-white rounded-2xl shadow-2xl border border-gray-200 overflow-hidden animate-in fade-in slide-in-from-bottom-2 duration-200">

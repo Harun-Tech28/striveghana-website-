@@ -76,7 +76,7 @@ export default function RootLayout({
     <html lang="en" className={`${inter.variable} ${poppins.variable}`}>
       <body className={`${inter.className} antialiased`}>
         <Header />
-        <main className="min-h-screen">
+        <main className="min-h-screen pb-16 sm:pb-0">
           {children}
         </main>
         <Footer />

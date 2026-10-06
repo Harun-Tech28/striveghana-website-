@@ -28,22 +28,20 @@ export default function TrustBar() {
 
   return (
     <section className="bg-white border-y border-slate-200/80 relative z-20 shadow-xs">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 divide-y sm:divide-y-0 sm:divide-x divide-slate-100">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6 lg:gap-8">
           {pillars.map((pillar, idx) => {
             const Icon = pillar.icon
             return (
               <div 
                 key={idx} 
-                className={`flex items-start space-x-4 group ${
-                  idx > 0 ? 'pt-5 sm:pt-0 sm:pl-6 lg:pl-8' : ''
-                }`}
+                className="flex items-start space-x-3.5 p-3.5 sm:p-0 rounded-xl bg-slate-50/70 sm:bg-transparent border sm:border-0 border-slate-100 group"
               >
-                <div className="w-12 h-12 rounded-2xl bg-amber-500/10 text-amber-700 flex items-center justify-center flex-shrink-0 border border-amber-500/20 group-hover:bg-amber-500 group-hover:text-slate-950 transition-all duration-300">
-                  <Icon size={24} className="transition-transform group-hover:scale-110" />
+                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-amber-500/10 text-amber-700 flex items-center justify-center flex-shrink-0 border border-amber-500/20 group-hover:bg-amber-500 group-hover:text-slate-950 transition-all duration-300">
+                  <Icon size={20} className="sm:w-6 sm:h-6 transition-transform group-hover:scale-110" />
                 </div>
-                <div className="space-y-1">
-                  <h3 className="text-base font-bold text-slate-950 font-heading tracking-tight leading-snug">
+                <div className="space-y-0.5">
+                  <h3 className="text-sm sm:text-base font-bold text-slate-950 font-heading tracking-tight leading-snug">
                     {pillar.title}
                   </h3>
                   <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">

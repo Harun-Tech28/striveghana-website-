@@ -46,22 +46,22 @@ export default function FaqSection() {
   }
 
   return (
-    <section className="py-20 sm:py-28 bg-white border-b border-gray-200" id="faqs">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
+    <section className="py-12 sm:py-20 bg-white border-b border-gray-200" id="faqs">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8 sm:space-y-10">
         <div>
-          <span className="text-xs sm:text-sm font-bold uppercase tracking-widest text-amber-900 bg-amber-50 px-3.5 py-1.5 rounded-full border border-amber-200 inline-block mb-3">
+          <span className="text-xs sm:text-sm font-bold uppercase tracking-widest text-amber-900 bg-amber-50 px-3.5 py-1.5 rounded-full border border-amber-200 inline-block mb-2 sm:mb-3">
             Common Inquiries
           </span>
-          <h2 className="text-3xl sm:text-5xl font-extrabold font-heading text-slate-950 tracking-tight">
+          <h2 className="text-2xl sm:text-4xl font-extrabold font-heading text-slate-950 tracking-tight">
             Frequently Asked Questions
           </h2>
-          <p className="mt-3 text-lg sm:text-xl text-slate-600 leading-relaxed font-normal">
+          <p className="mt-2 sm:mt-3 text-sm sm:text-base lg:text-lg text-slate-600 leading-relaxed font-normal">
             Clear information about our convert support, classes, Zakat policy, and community center in Ejisu.
           </p>
         </div>
 
         {/* Search & Filter */}
-        <div className="space-y-4">
+        <div className="space-y-3.5 sm:space-y-4">
           <div className="relative">
             <Search size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" />
             <input
@@ -69,7 +69,7 @@ export default function FaqSection() {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search questions (e.g. zakat, classes, new converts, momo)..."
-              className="w-full pl-11 pr-10 py-3.5 bg-gray-50/80 border border-gray-200 rounded-xl text-base focus:outline-none focus:ring-2 focus:ring-amber-500 focus:bg-white transition-all shadow-xs text-slate-900"
+              className="w-full pl-11 pr-10 py-3 sm:py-3.5 bg-gray-50/80 border border-gray-200 rounded-xl text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-amber-500 focus:bg-white transition-all shadow-xs text-slate-900"
             />
             {searchQuery && (
               <button
@@ -83,13 +83,13 @@ export default function FaqSection() {
             )}
           </div>
 
-          <div className="flex flex-wrap gap-2">
+          <div className="flex flex-wrap gap-1.5 sm:gap-2">
             {categories.map((cat) => (
               <button
                 key={cat.id}
                 type="button"
                 onClick={() => setSelectedCategory(cat.id)}
-                className={`px-4 py-2 rounded-xl text-sm font-semibold transition-all ${
+                className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all ${
                   selectedCategory === cat.id
                     ? 'bg-amber-500 text-slate-950 font-bold shadow-xs'
                     : 'bg-slate-100 text-slate-700 hover:bg-amber-50 hover:text-amber-900'
