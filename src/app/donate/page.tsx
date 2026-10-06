@@ -162,13 +162,13 @@ export default function DonatePage() {
                 </div>
               </div>
 
-              {/* Accountability Card */}
-              <div className="bg-emerald-50 p-5 rounded-lg border border-emerald-200 text-xs sm:text-sm text-emerald-950 space-y-2">
-                <div className="flex items-center space-x-2 font-bold text-emerald-900">
-                  <ShieldCheck size={18} className="text-emerald-700" />
+              {/* Accountability Card in Warm Gold */}
+              <div className="bg-amber-50/80 p-5 rounded-xl border border-amber-300 text-xs sm:text-sm text-amber-950 space-y-2">
+                <div className="flex items-center space-x-2 font-bold text-amber-900">
+                  <ShieldCheck size={18} className="text-amber-600" />
                   <span>100% Direct Community Benefit</span>
                 </div>
-                <p className="leading-relaxed text-emerald-900">
+                <p className="leading-relaxed text-amber-900">
                   All public donations go directly towards convert welfare packs, student study materials, and community halaqat. Zero public administrative deductions.
                 </p>
               </div>

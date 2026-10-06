@@ -238,7 +238,7 @@ export default function ProgramsPage() {
           <div className="pt-3 flex flex-wrap gap-4 justify-center">
             <Link
               href="/donate"
-              className="px-8 py-4 bg-amber-600 hover:bg-amber-500 text-white font-bold rounded-xl text-base sm:text-lg transition-all shadow-md hover:-translate-y-0.5"
+              className="px-8 py-4 bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold rounded-xl text-base sm:text-lg transition-all shadow-md shadow-amber-500/25 hover:-translate-y-0.5"
             >
               Sponsor a Student ($25/mo)
             </Link>

@@ -56,11 +56,11 @@ export default function Footer() {
                     value={newsletterEmail}
                     onChange={(e) => setNewsletterEmail(e.target.value)}
                     placeholder="Enter your email"
-                    className="px-3.5 py-2.5 bg-slate-900 border border-slate-800 rounded-xl text-sm text-white placeholder-slate-500 focus:outline-none focus:border-emerald-500 flex-1 transition-colors"
+                    className="px-3.5 py-2.5 bg-slate-900 border border-slate-800 rounded-xl text-sm text-white placeholder-slate-500 focus:outline-none focus:border-amber-400 flex-1 transition-colors"
                   />
                   <button
                     type="submit"
-                    className="px-4 py-2.5 bg-emerald-600 hover:bg-emerald-500 text-white rounded-xl text-sm font-semibold transition-colors flex items-center space-x-1 shadow-sm"
+                    className="px-4 py-2.5 bg-amber-500 hover:bg-amber-400 text-slate-950 rounded-xl text-sm font-bold transition-all flex items-center space-x-1 shadow-sm shadow-amber-500/20"
                   >
                     <span>Subscribe</span>
                     <ArrowRight size={14} />
@@ -72,37 +72,37 @@ export default function Footer() {
 
           {/* Column 2: Navigation Links (Span 2) */}
           <div className="lg:col-span-2 space-y-3">
-            <h3 className="text-xs font-bold uppercase tracking-wider text-gray-200">
+            <h3 className="text-xs font-bold uppercase tracking-wider text-amber-400">
               Navigation
             </h3>
             <ul className="space-y-2 text-sm">
               <li>
-                <Link href="/" className="text-gray-400 hover:text-white transition-colors">
+                <Link href="/" className="text-slate-400 hover:text-amber-400 transition-colors">
                   Home
                 </Link>
               </li>
               <li>
-                <Link href="/about" className="text-gray-400 hover:text-white transition-colors">
+                <Link href="/about" className="text-slate-400 hover:text-amber-400 transition-colors">
                   About Us
                 </Link>
               </li>
               <li>
-                <Link href="/programs" className="text-gray-400 hover:text-white transition-colors">
+                <Link href="/programs" className="text-slate-400 hover:text-amber-400 transition-colors">
                   Weekly Programs
                 </Link>
               </li>
               <li>
-                <Link href="/get-involved" className="text-gray-400 hover:text-white transition-colors">
+                <Link href="/get-involved" className="text-slate-400 hover:text-amber-400 transition-colors">
                   Volunteer & Mentor
                 </Link>
               </li>
               <li>
-                <Link href="/donate" className="text-gray-400 hover:text-white transition-colors">
+                <Link href="/donate" className="text-slate-400 hover:text-amber-400 transition-colors">
                   Make a Donation
                 </Link>
               </li>
               <li>
-                <Link href="/contact" className="text-gray-400 hover:text-white transition-colors">
+                <Link href="/contact" className="text-slate-400 hover:text-amber-400 transition-colors">
                   Contact Us
                 </Link>
               </li>

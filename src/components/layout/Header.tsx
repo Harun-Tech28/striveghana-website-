@@ -96,8 +96,8 @@ const Header = () => {
                     href={item.href}
                     className={`px-3.5 py-2 rounded-lg text-sm font-medium transition-colors ${
                       active
-                        ? 'text-emerald-700 bg-emerald-50 font-bold'
-                        : 'text-gray-700 hover:text-emerald-700 hover:bg-gray-50'
+                        ? 'text-amber-800 bg-amber-50 font-bold border border-amber-200/60'
+                        : 'text-gray-700 hover:text-amber-600 hover:bg-amber-50/40'
                     }`}
                   >
                     {item.label}
@@ -108,9 +108,9 @@ const Header = () => {
               <div className="pl-3">
                 <Link
                   href="/donate"
-                  className="inline-flex items-center space-x-1.5 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-2 px-4 rounded-xl text-sm transition-all shadow-sm hover:shadow hover:-translate-y-0.5"
+                  className="inline-flex items-center space-x-1.5 bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold py-2 px-4 rounded-xl text-sm transition-all shadow-sm shadow-amber-500/25 hover:shadow-md hover:-translate-y-0.5"
                 >
-                  <Heart size={14} className="fill-white" />
+                  <Heart size={14} className="fill-slate-950" />
                   <span>Donate</span>
                 </Link>
               </div>
@@ -120,13 +120,13 @@ const Header = () => {
             <div className="flex items-center space-x-1.5 sm:space-x-2 md:hidden">
               <Link
                 href="/donate"
-                className="bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold py-2 px-2.5 sm:px-3 rounded-lg flex items-center space-x-1 shadow-xs"
+                className="bg-amber-500 hover:bg-amber-400 text-slate-950 text-xs font-bold py-2 px-2.5 sm:px-3 rounded-lg flex items-center space-x-1 shadow-xs"
               >
-                <Heart size={12} className="fill-white" />
+                <Heart size={12} className="fill-slate-950" />
                 <span>Donate</span>
               </Link>
               <button
-                className="p-2 rounded-lg text-gray-700 hover:bg-gray-100 transition-colors focus:outline-none"
+                className="p-2 rounded-lg text-gray-700 hover:bg-amber-50 transition-colors focus:outline-none"
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
                 aria-label="Toggle navigation menu"
               >
@@ -148,7 +148,7 @@ const Header = () => {
                     href={item.href}
                     className={`px-3 py-2.5 rounded-lg text-sm font-medium transition-colors ${
                       active
-                        ? 'text-emerald-700 bg-emerald-50 font-bold'
+                        ? 'text-amber-800 bg-amber-50 font-bold border border-amber-200'
                         : 'text-gray-700 hover:bg-gray-50'
                     }`}
                     onClick={() => setIsMenuOpen(false)}
@@ -162,10 +162,10 @@ const Header = () => {
             <div className="pt-3 border-t border-gray-100 space-y-2">
               <Link
                 href="/donate"
-                className="w-full py-3 bg-emerald-600 text-white font-bold rounded-xl text-sm flex items-center justify-center space-x-2 shadow-xs"
+                className="w-full py-3 bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold rounded-xl text-sm flex items-center justify-center space-x-2 shadow-sm"
                 onClick={() => setIsMenuOpen(false)}
               >
-                <Heart size={15} className="fill-white" />
+                <Heart size={15} className="fill-slate-950" />
                 <span>Support Our Programs (Donate)</span>
               </Link>
 
@@ -174,9 +174,9 @@ const Header = () => {
                   href={`https://wa.me/${organizationData.contact.whatsapp}?text=${encodeURIComponent("Salam Alaykum, I am reaching out from the Strive Ghana website.")}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-2.5 bg-emerald-50 text-emerald-800 rounded-xl font-semibold flex items-center justify-center space-x-1 border border-emerald-200"
+                  className="p-2.5 bg-amber-50 text-amber-900 rounded-xl font-bold flex items-center justify-center space-x-1 border border-amber-200"
                 >
-                  <MessageCircle size={14} />
+                  <MessageCircle size={14} className="text-amber-700" />
                   <span>WhatsApp</span>
                 </a>
                 <a

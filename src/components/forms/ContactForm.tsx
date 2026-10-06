@@ -254,20 +254,20 @@ const ContactForm = () => {
           )}
         </div>
 
-        {/* Submit Button */}
+        {/* Submit Button in Prestigious Gold */}
         <button
           type="submit"
           disabled={isSubmitting}
-          className="w-full bg-primary-700 hover:bg-primary-800 disabled:bg-gray-300 text-white font-medium py-2.5 px-4 rounded-md transition-colors flex items-center justify-center space-x-2 text-sm"
+          className="w-full bg-amber-500 hover:bg-amber-400 disabled:bg-gray-300 text-slate-950 font-bold py-3.5 px-4 rounded-xl transition-all flex items-center justify-center space-x-2 text-sm shadow-md shadow-amber-500/20"
         >
           {isSubmitting ? (
             <>
-              <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></div>
+              <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-slate-950"></div>
               <span>Sending Message...</span>
             </>
           ) : (
             <>
-              <Send className="w-4 h-4" />
+              <Send className="w-4 h-4 fill-slate-950" />
               <span>Send Message</span>
             </>
           )}

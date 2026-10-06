@@ -5,17 +5,13 @@ import {
   Heart, 
   ArrowRight, 
   ShieldCheck, 
-  Check, 
   MapPin, 
   Phone, 
   MessageCircle, 
   Sparkles, 
   HeartHandshake, 
   Home as HomeIcon, 
-  GraduationCap,
-  BookOpen,
-  Calendar,
-  Users
+  GraduationCap
 } from 'lucide-react'
 import Hero from '@/components/ui/Hero'
 import ImpactStories from '@/components/ui/ImpactStories'
@@ -23,7 +19,7 @@ import DailyAyahReflection from '@/components/ui/DailyAyahReflection'
 import { organizationData } from '@/data/organization'
 
 export default function Home() {
-  const { programs, contact } = organizationData
+  const { programs } = organizationData
 
   const corePillars = [
     {
@@ -33,7 +29,6 @@ export default function Home() {
       icon: HeartHandshake,
       badge: "Shahada Support",
       link: "/programs#new-muslim",
-      color: "emerald"
     },
     {
       title: "Orphan Shelter & Daily Meals",
@@ -42,7 +37,6 @@ export default function Home() {
       icon: HomeIcon,
       badge: "Orphan Care",
       link: "/programs#orphan-care",
-      color: "amber"
     },
     {
       title: "Youth Circles & Livelihoods",
@@ -51,7 +45,6 @@ export default function Home() {
       icon: GraduationCap,
       badge: "Youth Leadership",
       link: "/programs#youth",
-      color: "blue"
     }
   ]
 
@@ -62,14 +55,14 @@ export default function Home() {
       amountGHS: "GH₵ 350",
       description: "Provides a prayer mat, beginner Arabic/English Quran, prayer guide, and modest clothing for a newly converted Muslim.",
       actionText: "Sponsor a Convert",
-      badge: "High Immediate Impact",
+      badge: "Immediate Impact",
       popular: false
     },
     {
       title: "Sponsor an Orphan's Care",
       amountUSD: "$50",
       amountGHS: "GH₵ 700",
-      description: "Covers one month of nutritious daily meals, primary school fees, books, and medical care for an orphan at our center.",
+      description: "Covers one month of nutritious daily meals, primary school fees, books, and loving care for an orphan at our center.",
       actionText: "Sponsor an Orphan",
       badge: "Most Urgent Need",
       popular: true
@@ -87,7 +80,7 @@ export default function Home() {
 
   return (
     <div className="space-y-0 overflow-x-hidden">
-      {/* 1. Grounded Hero with Clear, Large Background Image & Responsive Controls */}
+      {/* 1. Grounded Hero with Clear, Large Background Image & Warm Gold Highlights */}
       <Hero
         title="Strive (S)"
         subtitle="Strive in unity, growing in faith and brotherhood"
@@ -99,12 +92,12 @@ export default function Home() {
         ]}
       />
 
-      {/* 2. Core Pillars: Simple, Attractive & Scannable */}
-      <section className="py-16 sm:py-24 bg-white border-b border-gray-100">
+      {/* 2. Core Pillars: Simple, Attractive & Scannable in Prestigious Gold */}
+      <section className="py-16 sm:py-24 bg-white border-b border-amber-100/60">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
-            <span className="inline-flex items-center space-x-1.5 text-xs font-bold uppercase tracking-widest text-emerald-700 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-200 mb-3">
-              <Sparkles size={13} className="text-emerald-600" />
+            <span className="inline-flex items-center space-x-1.5 text-xs font-bold uppercase tracking-widest text-amber-900 bg-amber-50 px-3 py-1 rounded-full border border-amber-200 mb-3">
+              <Sparkles size={13} className="text-amber-600" />
               <span>What We Do</span>
             </span>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 font-heading tracking-tight">
@@ -121,14 +114,14 @@ export default function Home() {
               return (
                 <div
                   key={idx}
-                  className="p-7 sm:p-8 rounded-2xl bg-slate-50/70 hover:bg-white border border-slate-200 hover:border-emerald-300 hover:shadow-xl transition-all duration-300 flex flex-col justify-between group"
+                  className="p-7 sm:p-8 rounded-2xl bg-amber-50/20 hover:bg-white border border-slate-200 hover:border-amber-400 hover:shadow-xl transition-all duration-300 flex flex-col justify-between group"
                 >
                   <div>
                     <div className="flex items-center justify-between mb-5">
-                      <div className="w-12 h-12 rounded-xl bg-emerald-600 text-white flex items-center justify-center shadow-md shadow-emerald-600/20 group-hover:scale-105 transition-transform">
+                      <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-amber-400 to-amber-500 text-slate-950 flex items-center justify-center shadow-md shadow-amber-500/20 group-hover:scale-105 transition-transform">
                         <IconComponent size={24} />
                       </div>
-                      <span className="text-xs font-semibold px-2.5 py-1 rounded-full bg-white border border-slate-200 text-slate-700">
+                      <span className="text-xs font-semibold px-2.5 py-1 rounded-full bg-white border border-amber-200 text-amber-900">
                         {pillar.badge}
                       </span>
                     </div>
@@ -136,7 +129,7 @@ export default function Home() {
                     <h3 className="text-xl sm:text-2xl font-bold text-slate-900 font-heading mb-1">
                       {pillar.title}
                     </h3>
-                    <p className="text-xs font-arabic text-amber-600 font-medium mb-3">
+                    <p className="text-xs font-arabic text-amber-600 font-semibold mb-3">
                       {pillar.arabic}
                     </p>
                     <p className="text-sm sm:text-base text-slate-600 leading-relaxed font-normal mb-6">
@@ -146,7 +139,7 @@ export default function Home() {
 
                   <Link
                     href={pillar.link}
-                    className="inline-flex items-center space-x-2 text-sm font-bold text-emerald-700 hover:text-emerald-800 transition-colors pt-4 border-t border-slate-200/80 group-hover:translate-x-1 duration-200"
+                    className="inline-flex items-center space-x-2 text-sm font-bold text-amber-700 hover:text-amber-800 transition-colors pt-4 border-t border-slate-200/80 group-hover:translate-x-1 duration-200"
                   >
                     <span>Learn how this works</span>
                     <ArrowRight size={16} />
@@ -165,7 +158,7 @@ export default function Home() {
             
             {/* Story Column */}
             <div className="lg:col-span-7 space-y-6">
-              <span className="text-xs font-bold uppercase tracking-widest text-emerald-800 bg-emerald-100/80 px-3 py-1 rounded-full border border-emerald-200 inline-block">
+              <span className="text-xs font-bold uppercase tracking-widest text-amber-900 bg-amber-100/90 px-3 py-1 rounded-full border border-amber-200 inline-block">
                 Our Sacred Mission
               </span>
               <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 font-heading tracking-tight leading-tight">
@@ -182,7 +175,7 @@ export default function Home() {
               </p>
 
               {/* Leadership Quote Card */}
-              <div className="p-5 sm:p-6 bg-white rounded-2xl border border-slate-200 shadow-sm border-l-4 border-l-emerald-600">
+              <div className="p-5 sm:p-6 bg-white rounded-2xl border border-slate-200 shadow-sm border-l-4 border-l-amber-500">
                 <p className="italic text-sm sm:text-base text-slate-800 leading-relaxed font-serif">
                   "The true test of our brotherhood is how we care for someone on Monday morning after the Shahada celebration has ended—when they need a patient brother to sit with them over tea and practice Surah Al-Fatiha."
                 </p>
@@ -194,13 +187,13 @@ export default function Home() {
               <div className="pt-2 flex flex-col sm:flex-row gap-3">
                 <Link
                   href="/about"
-                  className="px-6 py-3.5 bg-emerald-700 hover:bg-emerald-800 text-white font-semibold rounded-xl text-center text-sm sm:text-base transition-all shadow-sm hover:-translate-y-0.5"
+                  className="px-6 py-3.5 bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold rounded-xl text-center text-sm sm:text-base transition-all shadow-sm shadow-amber-500/25 hover:-translate-y-0.5"
                 >
                   Read Our Full Story
                 </Link>
                 <Link
                   href="/get-involved"
-                  className="px-6 py-3.5 bg-white border border-slate-300 hover:bg-slate-100 text-slate-800 font-semibold rounded-xl text-center text-sm sm:text-base transition-all shadow-sm hover:-translate-y-0.5"
+                  className="px-6 py-3.5 bg-white border border-slate-300 hover:border-amber-400 hover:text-amber-800 text-slate-800 font-bold rounded-xl text-center text-sm sm:text-base transition-all shadow-sm hover:-translate-y-0.5"
                 >
                   Volunteer With Us
                 </Link>
@@ -211,7 +204,7 @@ export default function Home() {
             <div className="lg:col-span-5">
               <div className="rounded-2xl border border-slate-200 bg-white p-6 sm:p-8 shadow-md space-y-6">
                 <div>
-                  <div className="flex items-center space-x-2 text-xs font-bold text-emerald-700 uppercase tracking-wider mb-1">
+                  <div className="flex items-center space-x-2 text-xs font-bold text-amber-700 uppercase tracking-wider mb-1">
                     <MapPin size={14} />
                     <span>Ejisuman Headquarters</span>
                   </div>
@@ -225,15 +218,15 @@ export default function Home() {
 
                 <div className="border-t border-slate-100 pt-5 space-y-3.5 text-sm text-slate-700">
                   <div className="flex items-start space-x-3">
-                    <div className="w-6 h-6 rounded-md bg-emerald-100 text-emerald-800 flex items-center justify-center flex-shrink-0 mt-0.5 font-bold text-xs">✓</div>
+                    <div className="w-6 h-6 rounded-md bg-amber-100 text-amber-900 flex items-center justify-center flex-shrink-0 mt-0.5 font-bold text-xs">✓</div>
                     <p><strong className="text-slate-900">Daily Open Sanctuary:</strong> Prayer instruction, Quran starter kits, and warm hospitality.</p>
                   </div>
                   <div className="flex items-start space-x-3">
-                    <div className="w-6 h-6 rounded-md bg-emerald-100 text-emerald-800 flex items-center justify-center flex-shrink-0 mt-0.5 font-bold text-xs">✓</div>
+                    <div className="w-6 h-6 rounded-md bg-amber-100 text-amber-900 flex items-center justify-center flex-shrink-0 mt-0.5 font-bold text-xs">✓</div>
                     <p><strong className="text-slate-900">Orphan Care & Feeding:</strong> Nutritious meals, clothing, and primary education sponsorship.</p>
                   </div>
                   <div className="flex items-start space-x-3">
-                    <div className="w-6 h-6 rounded-md bg-emerald-100 text-emerald-800 flex items-center justify-center flex-shrink-0 mt-0.5 font-bold text-xs">✓</div>
+                    <div className="w-6 h-6 rounded-md bg-amber-100 text-amber-900 flex items-center justify-center flex-shrink-0 mt-0.5 font-bold text-xs">✓</div>
                     <p><strong className="text-slate-900">Emergency Shelter:</strong> Safe temporary housing for converts facing family rejection.</p>
                   </div>
                 </div>
@@ -241,7 +234,7 @@ export default function Home() {
                 <div className="border-t border-slate-100 pt-5 space-y-3">
                   <div className="flex items-center justify-between text-xs sm:text-sm text-slate-600">
                     <span>Direct Helpline:</span>
-                    <a href="tel:0542524571" className="font-bold text-slate-900 hover:text-emerald-700 transition-colors">
+                    <a href="tel:0542524571" className="font-bold text-slate-900 hover:text-amber-600 transition-colors">
                       054 252 4571
                     </a>
                   </div>
@@ -249,9 +242,9 @@ export default function Home() {
                     href="https://wa.me/233542524571?text=Salam%20Alaykum,%20I%20would%20like%20to%20learn%20more%20about%20Strive%20Ghana."
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-full py-3 bg-emerald-50 hover:bg-emerald-100 text-emerald-800 border border-emerald-200 rounded-xl font-bold text-sm flex items-center justify-center space-x-2 transition-colors"
+                    className="w-full py-3 bg-amber-50 hover:bg-amber-100 text-amber-950 border border-amber-200 rounded-xl font-bold text-sm flex items-center justify-center space-x-2 transition-colors"
                   >
-                    <MessageCircle size={16} />
+                    <MessageCircle size={16} className="text-amber-700" />
                     <span>Chat on WhatsApp</span>
                   </a>
                 </div>
@@ -263,11 +256,11 @@ export default function Home() {
       </section>
 
       {/* 4. Active Programs: Compact & Engaging */}
-      <section className="py-16 sm:py-24 bg-white border-b border-gray-100">
+      <section className="py-16 sm:py-24 bg-white border-b border-amber-100/60">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-12">
             <div>
-              <span className="text-xs font-bold uppercase tracking-widest text-emerald-800 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-200 inline-block mb-3">
+              <span className="text-xs font-bold uppercase tracking-widest text-amber-900 bg-amber-50 px-3 py-1 rounded-full border border-amber-200 inline-block mb-3">
                 Weekly Activities
               </span>
               <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 font-heading tracking-tight">
@@ -279,7 +272,7 @@ export default function Home() {
             </div>
             <Link
               href="/programs"
-              className="text-sm sm:text-base font-bold text-emerald-700 hover:text-emerald-800 flex items-center space-x-1.5 transition-colors flex-shrink-0"
+              className="text-sm sm:text-base font-bold text-amber-700 hover:text-amber-800 flex items-center space-x-1.5 transition-colors flex-shrink-0"
             >
               <span>View full weekly timetable</span>
               <ArrowRight size={16} />
@@ -287,14 +280,14 @@ export default function Home() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-            {programs.slice(0, 3).map((program, index) => (
+            {programs.slice(0, 3).map((program) => (
               <div
                 key={program.id}
-                className="p-7 rounded-2xl bg-white border border-slate-200 hover:border-emerald-300 shadow-sm hover:shadow-md transition-all duration-200 flex flex-col justify-between"
+                className="p-7 rounded-2xl bg-white border border-slate-200 hover:border-amber-400 shadow-sm hover:shadow-md transition-all duration-200 flex flex-col justify-between"
               >
                 <div>
                   <div className="flex items-center justify-between mb-4">
-                    <span className="text-xs font-bold uppercase tracking-wider px-2.5 py-1 rounded-md bg-emerald-50 text-emerald-800 border border-emerald-200">
+                    <span className="text-xs font-bold uppercase tracking-wider px-2.5 py-1 rounded-md bg-amber-50 text-amber-900 border border-amber-200">
                       {program.keyLetter} • Program Track
                     </span>
                     <span className="text-xs font-medium text-slate-500">
@@ -316,7 +309,7 @@ export default function Home() {
                 <div className="pt-4 border-t border-slate-100">
                   <Link
                     href={`/programs#${program.id}`}
-                    className="text-xs sm:text-sm font-bold text-emerald-700 hover:text-emerald-800 inline-flex items-center space-x-1"
+                    className="text-xs sm:text-sm font-bold text-amber-700 hover:text-amber-800 inline-flex items-center space-x-1"
                   >
                     <span>Program schedule & details</span>
                     <ArrowRight size={14} />
@@ -328,11 +321,11 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 5. Direct Ways to Give: Simple, Transparent & High-Converting */}
+      {/* 5. Direct Ways to Give: Simple, Transparent & High-Converting in Rich Gold */}
       <section className="py-16 sm:py-24 bg-slate-50 border-b border-gray-200" id="donate-section">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
-            <span className="text-xs font-bold uppercase tracking-widest text-emerald-800 bg-emerald-100/80 px-3.5 py-1 rounded-full border border-emerald-200 inline-block mb-3">
+            <span className="text-xs font-bold uppercase tracking-widest text-amber-900 bg-amber-100/80 px-3.5 py-1 rounded-full border border-amber-200 inline-block mb-3">
               Give with Purpose
             </span>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 font-heading">
@@ -349,12 +342,12 @@ export default function Home() {
                 key={idx}
                 className={`p-7 sm:p-8 rounded-2xl bg-white border transition-all duration-200 flex flex-col justify-between ${
                   opt.popular
-                    ? 'border-emerald-500 shadow-lg ring-1 ring-emerald-500 relative'
+                    ? 'border-amber-400 shadow-xl ring-2 ring-amber-400/30 relative'
                     : 'border-slate-200 shadow-sm hover:shadow-md'
                 }`}
               >
                 {opt.popular && (
-                  <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-emerald-600 text-white text-[11px] font-bold uppercase tracking-wider px-3.5 py-0.5 rounded-full shadow-xs">
+                  <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-amber-500 text-slate-950 text-[11px] font-bold uppercase tracking-wider px-3.5 py-0.5 rounded-full shadow-xs">
                     Most Urgent Need
                   </div>
                 )}
@@ -390,11 +383,11 @@ export default function Home() {
                   href="/donate"
                   className={`w-full py-3.5 px-4 rounded-xl text-center text-sm font-bold transition-all flex items-center justify-center space-x-2 shadow-xs ${
                     opt.popular
-                      ? 'bg-emerald-600 hover:bg-emerald-700 text-white hover:shadow-md'
+                      ? 'bg-amber-500 hover:bg-amber-400 text-slate-950 shadow-md shadow-amber-500/20'
                       : 'bg-slate-900 hover:bg-slate-800 text-white'
                   }`}
                 >
-                  <Heart size={16} className="fill-white" />
+                  <Heart size={16} className={opt.popular ? 'fill-slate-950' : 'fill-white'} />
                   <span>{opt.actionText}</span>
                 </Link>
               </div>
@@ -402,9 +395,9 @@ export default function Home() {
           </div>
 
           {/* Simple Zakat & Transparency Assurance Card */}
-          <div className="mt-10 p-6 rounded-2xl bg-white border border-emerald-200 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-5 text-slate-800">
+          <div className="mt-10 p-6 rounded-2xl bg-white border border-amber-300 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-5 text-slate-800">
             <div className="flex items-center space-x-4">
-              <div className="w-12 h-12 rounded-xl bg-emerald-50 text-emerald-700 flex items-center justify-center flex-shrink-0 border border-emerald-200">
+              <div className="w-12 h-12 rounded-xl bg-amber-50 text-amber-700 flex items-center justify-center flex-shrink-0 border border-amber-200">
                 <ShieldCheck size={26} />
               </div>
               <div className="text-sm leading-relaxed">
@@ -416,7 +409,7 @@ export default function Home() {
             </div>
             <Link
               href="/donate"
-              className="px-6 py-3 bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold rounded-xl text-sm flex-shrink-0 shadow-sm transition-all hover:-translate-y-0.5"
+              className="px-6 py-3 bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold rounded-xl text-sm flex-shrink-0 shadow-sm shadow-amber-500/25 transition-all hover:-translate-y-0.5"
             >
               Donate via Paystack / MoMo
             </Link>
@@ -425,7 +418,7 @@ export default function Home() {
       </section>
 
       {/* 6. Daily Spiritual Reflection */}
-      <section className="py-16 sm:py-20 bg-white border-b border-gray-100">
+      <section className="py-16 sm:py-20 bg-white border-b border-amber-100/60">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <DailyAyahReflection />
         </div>
@@ -446,13 +439,13 @@ export default function Home() {
           <div className="pt-3 flex flex-col sm:flex-row gap-3.5 justify-center">
             <Link
               href="/contact"
-              className="px-7 py-3.5 bg-emerald-600 hover:bg-emerald-500 text-white font-bold rounded-xl text-base transition-all shadow-md hover:-translate-y-0.5"
+              className="px-7 py-3.5 bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold rounded-xl text-base transition-all shadow-lg shadow-amber-500/25 hover:-translate-y-0.5"
             >
               Contact Dr. Salis & Team
             </Link>
             <Link
               href="/donate"
-              className="px-7 py-3.5 bg-white/10 hover:bg-white/20 border border-white/25 text-white font-bold rounded-xl text-base transition-all backdrop-blur-xs hover:-translate-y-0.5"
+              className="px-7 py-3.5 bg-white/10 hover:bg-amber-500 hover:text-slate-950 border border-amber-400/50 text-amber-300 font-bold rounded-xl text-base transition-all backdrop-blur-xs hover:-translate-y-0.5"
             >
               Support With a Donation
             </Link>

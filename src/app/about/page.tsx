@@ -272,7 +272,7 @@ export default function AboutPage() {
 
                 <Link
                   href="/contact"
-                  className="w-full py-3.5 px-5 bg-emerald-800 hover:bg-emerald-900 text-white font-semibold text-base rounded-xl flex items-center justify-center space-x-2 transition-all shadow-xs"
+                  className="w-full py-3.5 px-5 bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-base rounded-xl flex items-center justify-center space-x-2 transition-all shadow-md shadow-amber-500/20"
                 >
                   <span>Plan a Visit or Contact Us</span>
                   <ArrowRight size={16} />
@@ -295,7 +295,7 @@ export default function AboutPage() {
           <div className="pt-3 flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/donate"
-              className="px-8 py-4 bg-amber-600 hover:bg-amber-500 text-white font-bold rounded-xl text-base sm:text-lg transition-all shadow-md hover:-translate-y-0.5"
+              className="px-8 py-4 bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold rounded-xl text-base sm:text-lg transition-all shadow-md shadow-amber-500/25 hover:-translate-y-0.5"
             >
               Make a Donation
             </Link>

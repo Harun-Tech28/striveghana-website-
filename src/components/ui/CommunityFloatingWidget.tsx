@@ -89,7 +89,7 @@ export default function CommunityFloatingWidget() {
             <div className="pt-2 border-t border-gray-200 space-y-2">
               <button
                 onClick={() => openWhatsApp()}
-                className="w-full py-2.5 px-3 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl font-semibold text-xs flex items-center justify-center space-x-1.5 transition-colors shadow-xs"
+                className="w-full py-2.5 px-3 bg-amber-500 hover:bg-amber-400 text-slate-950 rounded-xl font-bold text-xs flex items-center justify-center space-x-1.5 transition-colors shadow-xs"
               >
                 <MessageCircle size={15} />
                 <span>Open WhatsApp Chat</span>
@@ -99,7 +99,7 @@ export default function CommunityFloatingWidget() {
                 href={`tel:${organizationData.contact.phone}`}
                 className="w-full py-2 px-3 bg-white hover:bg-gray-100 text-gray-800 border border-gray-200 rounded-xl font-medium text-xs flex items-center justify-center space-x-1.5 transition-colors text-center block"
               >
-                <Phone size={13} className="text-emerald-700 inline mr-1" />
+                <Phone size={13} className="text-amber-600 inline mr-1" />
                 <span>Call Center: {phoneDisplay}</span>
               </a>
             </div>
@@ -107,18 +107,18 @@ export default function CommunityFloatingWidget() {
         </div>
       )}
 
-      {/* Floating Trigger Button */}
+      {/* Floating Trigger Button in Prestigious Gold */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="h-12 px-4 rounded-full bg-emerald-700 hover:bg-emerald-600 text-white shadow-xl flex items-center space-x-2 border border-emerald-600 transition-all hover:scale-105 focus:outline-none focus:ring-2 focus:ring-amber-400"
+        className="h-12 px-4 rounded-full bg-amber-500 hover:bg-amber-400 text-slate-950 shadow-xl shadow-amber-500/25 flex items-center space-x-2 border border-amber-400 transition-all hover:scale-105 focus:outline-none focus:ring-2 focus:ring-amber-400 font-bold"
         aria-label="Contact Strive Ghana Community Desk"
       >
         {isOpen ? (
           <X size={18} />
         ) : (
           <>
-            <MessageCircle size={18} className="text-amber-300" />
-            <span className="text-xs font-semibold tracking-wide hidden sm:inline">Connect With Us</span>
+            <MessageCircle size={18} className="fill-slate-950" />
+            <span className="text-xs font-bold tracking-wide hidden sm:inline">Connect With Us</span>
           </>
         )}
       </button>

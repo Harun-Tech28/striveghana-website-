@@ -151,23 +151,23 @@ export default function GetInvolvedPage() {
             </div>
           </div>
 
-          {/* Direct WhatsApp Callout */}
-          <div className="p-6 rounded-lg bg-emerald-50 border border-emerald-200 flex flex-col sm:flex-row items-center justify-between gap-4">
+          {/* Direct WhatsApp Callout in Warm Gold */}
+          <div className="p-6 rounded-2xl bg-amber-50 border border-amber-300 flex flex-col sm:flex-row items-center justify-between gap-4">
             <div>
-              <h4 className="font-bold text-emerald-950 text-base">
+              <h4 className="font-bold text-amber-950 text-base">
                 Ready to Volunteer?
               </h4>
-              <p className="text-xs text-emerald-800 mt-0.5">
-                Send a quick message directly to our coordination team.
+              <p className="text-xs text-amber-800 mt-0.5">
+                Send a quick message directly to Dr. Salis and our coordination team.
               </p>
             </div>
             <a
               href={`https://wa.me/${contact.whatsapp}?text=${encodeURIComponent("Salam Alaykum, I would like to volunteer with Strive Ghana in Ejisu.")}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="px-5 py-2.5 bg-emerald-700 hover:bg-emerald-800 text-white rounded-md font-medium text-xs flex items-center space-x-1.5 transition-colors flex-shrink-0"
+              className="px-6 py-3 bg-amber-500 hover:bg-amber-400 text-slate-950 rounded-xl font-bold text-xs flex items-center space-x-1.5 transition-all shadow-sm shadow-amber-500/20 flex-shrink-0"
             >
-              <MessageCircle size={15} />
+              <MessageCircle size={15} className="text-slate-950" />
               <span>Message on WhatsApp</span>
             </a>
           </div>

@@ -27,7 +27,7 @@ export default function ImpactStories() {
         {/* Section Heading & Category Filter */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
           <div>
-            <span className="text-xs font-bold uppercase tracking-widest text-emerald-800 bg-emerald-50 px-3.5 py-1 rounded-full border border-emerald-200 inline-block mb-3">
+            <span className="text-xs font-bold uppercase tracking-widest text-amber-900 bg-amber-50 px-3.5 py-1 rounded-full border border-amber-200 inline-block mb-3">
               Community Voices
             </span>
             <h2 className="text-3xl sm:text-4xl font-extrabold font-heading text-slate-900 tracking-tight">
@@ -45,10 +45,10 @@ export default function ImpactStories() {
                 key={filter.id}
                 type="button"
                 onClick={() => setActiveFilter(filter.id)}
-                className={`px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-semibold transition-all ${
+                className={`px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-bold transition-all ${
                   activeFilter === filter.id
-                    ? 'bg-emerald-600 text-white shadow-xs'
-                    : 'bg-slate-50 text-slate-700 border border-slate-200 hover:bg-slate-100'
+                    ? 'bg-amber-500 text-slate-950 shadow-sm shadow-amber-500/25'
+                    : 'bg-slate-50 text-slate-700 border border-slate-200 hover:bg-amber-50 hover:text-amber-900'
                 }`}
               >
                 {filter.label}
@@ -62,14 +62,14 @@ export default function ImpactStories() {
           {filteredStories.slice(0, 3).map((item) => (
             <div
               key={item.id}
-              className="p-7 rounded-2xl border border-slate-200 bg-slate-50/50 hover:bg-white shadow-xs hover:shadow-md transition-all duration-200 flex flex-col justify-between"
+              className="p-7 rounded-2xl border border-slate-200 hover:border-amber-400 bg-amber-50/20 hover:bg-white shadow-xs hover:shadow-md transition-all duration-200 flex flex-col justify-between"
             >
               <div>
                 <div className="flex items-center justify-between mb-4">
-                  <span className="text-xs font-bold text-emerald-700 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-200">
+                  <span className="text-xs font-bold text-amber-900 bg-amber-50 px-3 py-1 rounded-full border border-amber-200">
                     {item.tag}
                   </span>
-                  <Quote size={20} className="text-amber-500/40" />
+                  <Quote size={20} className="text-amber-500" />
                 </div>
 
                 <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-6 italic font-serif">
@@ -81,7 +81,7 @@ export default function ImpactStories() {
                 <img
                   src={item.image}
                   alt={item.name}
-                  className="w-11 h-11 rounded-full object-cover border-2 border-emerald-200 flex-shrink-0"
+                  className="w-11 h-11 rounded-full object-cover border-2 border-amber-400 flex-shrink-0"
                 />
                 <div>
                   <h3 className="font-bold text-slate-900 text-sm sm:text-base leading-snug">

@@ -375,15 +375,15 @@ function DonationFormInner() {
                 onClick={() => handleAmountSelect(item.amount)}
                 className={`p-3.5 rounded-xl border-2 text-left transition-all ${
                   selectedAmount === item.amount
-                    ? 'border-primary-600 bg-primary-50 text-primary-800 ring-1 ring-primary-500 shadow-sm'
-                    : 'border-gray-200 hover:border-primary-200 text-gray-800'
+                    ? 'border-amber-500 bg-amber-50 text-amber-950 ring-2 ring-amber-400 shadow-sm'
+                    : 'border-gray-200 hover:border-amber-300 hover:bg-amber-50/30 text-gray-800'
                 }`}
               >
-                <div className="font-extrabold text-lg text-primary-800 font-heading">
+                <div className="font-extrabold text-lg text-amber-950 font-heading">
                   {item.label}
-                  {watchFrequency === 'monthly' && <span className="text-xs font-normal text-gray-500">/mo</span>}
+                  {watchFrequency === 'monthly' && <span className="text-xs font-normal text-slate-500">/mo</span>}
                 </div>
-                <p className="text-[11px] text-gray-500 mt-1 line-clamp-1">
+                <p className="text-[11px] text-slate-500 mt-1 line-clamp-1">
                   {item.impact}
                 </p>
               </button>
@@ -396,8 +396,8 @@ function DonationFormInner() {
               onClick={() => handleAmountSelect('custom')}
               className={`px-4 py-2.5 rounded-xl border text-xs font-semibold transition-all whitespace-nowrap ${
                 selectedAmount === 'custom'
-                  ? 'border-primary-600 bg-primary-50 text-primary-700 font-bold'
-                  : 'border-gray-200 hover:border-gray-300 text-gray-700'
+                  ? 'border-amber-500 bg-amber-50 text-amber-950 font-bold ring-1 ring-amber-400'
+                  : 'border-gray-200 hover:border-amber-300 text-gray-700'
               }`}
             >
               Custom Amount
@@ -576,28 +576,28 @@ function DonationFormInner() {
             )}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="w-full py-3.5 bg-amber-600 hover:bg-amber-700 text-white font-semibold rounded-xl shadow-xs transition-colors flex items-center justify-center space-x-2 text-sm text-center"
+            className="w-full py-4 bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold rounded-xl shadow-md shadow-amber-500/25 transition-all flex items-center justify-center space-x-2 text-base text-center"
           >
-            <Smartphone size={18} />
+            <Smartphone size={20} className="fill-slate-950" />
             <span>Confirm MoMo Transfer via WhatsApp</span>
           </a>
         ) : (
           <button
             type="submit"
             disabled={isProcessing}
-            className="w-full py-3.5 bg-primary-700 hover:bg-primary-800 disabled:opacity-75 disabled:cursor-wait text-white font-semibold rounded-xl shadow-xs transition-colors flex items-center justify-center space-x-2 text-sm"
+            className="w-full py-4 bg-amber-500 hover:bg-amber-400 disabled:opacity-75 disabled:cursor-wait text-slate-950 font-bold rounded-xl shadow-md shadow-amber-500/25 transition-all flex items-center justify-center space-x-2 text-base"
           >
             {isProcessing ? (
               <>
-                <Loader2 size={18} className="animate-spin text-white" />
+                <Loader2 size={20} className="animate-spin text-slate-950" />
                 <span>Opening Paystack Checkout...</span>
               </>
             ) : (
               <>
-                <Heart size={18} className="fill-white" />
+                <Heart size={20} className="fill-slate-950" />
                 <span>
                   Make Payment • {currency === 'GHS' ? '₵' : '$'}
-                  {currentAmount}
+                  {currentAmount} {currency}
                 </span>
               </>
             )}
