@@ -13,7 +13,8 @@ import {
   Users, 
   BookOpen, 
   Heart, 
-  ShieldCheck 
+  ShieldCheck,
+  Sparkles
 } from 'lucide-react'
 
 export default function AboutPage() {
@@ -29,41 +30,41 @@ export default function AboutPage() {
 
   return (
     <div className="space-y-0">
-      {/* 1. Clean, Professional Page Header */}
-      <section className="bg-[#0b291a] text-white py-14 sm:py-20 border-b border-[#17432b]">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="space-y-3">
-            <span className="text-xs sm:text-sm font-semibold uppercase tracking-wider text-accent-gold block">
+      {/* 1. Clean, Executive Page Header */}
+      <section className="bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-white py-16 sm:py-24 border-b border-slate-800">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="space-y-4">
+            <span className="text-xs sm:text-sm font-bold uppercase tracking-widest text-amber-300 bg-white/10 px-3.5 py-1.5 rounded-full border border-white/15 inline-block">
               About Strive Ghana (السعي)
             </span>
-            <h1 className="text-3xl sm:text-5xl font-bold font-heading tracking-tight text-white">
+            <h1 className="text-4xl sm:text-6xl font-extrabold font-heading tracking-tight text-white leading-tight">
               Rooted in Faith, Dedicated to Brotherhood
             </h1>
-            <p className="text-lg sm:text-xl text-gray-200 max-w-2xl leading-relaxed pt-1">
-              A grassroots Muslim initiative in Ejisu, Ashanti Region, walking alongside young Muslims and new converts through mentorship, practical learning, and community care.
+            <p className="text-lg sm:text-2xl text-gray-200 max-w-3xl leading-relaxed pt-2 font-normal">
+              A grassroots Muslim initiative in Ejisu, Ashanti Region, walking alongside young Muslims, new converts, and orphans through personal mentorship, practical learning, and community care.
             </p>
           </div>
         </div>
       </section>
 
       {/* 2. Our Story & Roots in Ejisuman */}
-      <section className="py-16 sm:py-24 bg-white border-b border-gray-200">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
-          <div className="space-y-3">
-            <span className="text-xs font-semibold uppercase tracking-wider text-primary-700 block">
-              Our Background
+      <section className="py-20 sm:py-28 bg-white border-b border-gray-200">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+          <div className="space-y-4 max-w-3xl">
+            <span className="text-xs sm:text-sm font-bold uppercase tracking-widest text-emerald-800 bg-emerald-50 px-3.5 py-1.5 rounded-full border border-emerald-200 inline-block">
+              Our Community Roots
             </span>
-            <h2 className="text-2xl sm:text-3xl font-bold font-heading text-gray-900 tracking-tight">
+            <h2 className="text-3xl sm:text-5xl font-extrabold font-heading text-gray-900 tracking-tight">
               {storyAndRoots.title}
             </h2>
-            <p className="text-lg text-gray-700 font-medium leading-relaxed">
+            <p className="text-xl sm:text-2xl text-gray-700 font-semibold leading-relaxed">
               {storyAndRoots.lead}
             </p>
           </div>
 
           {/* Authentic Core Pillars: Convert Care & Orphan Care */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="rounded-lg overflow-hidden border border-gray-300 shadow-xs bg-white">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="rounded-2xl overflow-hidden border border-gray-200 shadow-sm bg-white hover:shadow-md transition-shadow">
               <div className="relative aspect-[16/10] w-full">
                 <img
                   src="/images/convert-care-charity.jpg"
@@ -71,13 +72,13 @@ export default function AboutPage() {
                   className="w-full h-full object-cover"
                 />
               </div>
-              <div className="p-3.5 bg-gray-50 border-t border-gray-200 text-xs text-gray-700">
-                <p className="font-semibold text-gray-900">New Muslim Convert Support & Mentorship</p>
-                <p className="text-gray-500 mt-0.5">Welcoming brothers embracing Islam with prayer kits, Arabic lessons, and genuine companionship.</p>
+              <div className="p-6 bg-white border-t border-gray-100">
+                <h3 className="font-bold text-gray-900 text-lg sm:text-xl font-heading">New Muslim Convert Support & Mentorship</h3>
+                <p className="text-gray-600 text-sm sm:text-base mt-2 leading-relaxed">Welcoming brothers embracing Islam with prayer kits, Arabic lessons, emergency housing, and genuine companionship.</p>
               </div>
             </div>
 
-            <div className="rounded-lg overflow-hidden border border-gray-300 shadow-xs bg-white">
+            <div className="rounded-2xl overflow-hidden border border-gray-200 shadow-sm bg-white hover:shadow-md transition-shadow">
               <div className="relative aspect-[16/10] w-full">
                 <img
                   src="/images/orphan-care-ghana.jpg"
@@ -85,14 +86,14 @@ export default function AboutPage() {
                   className="w-full h-full object-cover"
                 />
               </div>
-              <div className="p-3.5 bg-gray-50 border-t border-gray-200 text-xs text-gray-700">
-                <p className="font-semibold text-gray-900">Muslim Orphan Care & Upbringing (Yateem)</p>
-                <p className="text-gray-500 mt-0.5">Providing daily nutritious meals, safe shelter, schooling, and compassionate Islamic care in Ejisu.</p>
+              <div className="p-6 bg-white border-t border-gray-100">
+                <h3 className="font-bold text-gray-900 text-lg sm:text-xl font-heading">Muslim Orphan Care & Upbringing (Yateem)</h3>
+                <p className="text-gray-600 text-sm sm:text-base mt-2 leading-relaxed">Providing daily nutritious meals, safe shelter, schooling, and compassionate Islamic care in Ejisu.</p>
               </div>
             </div>
           </div>
 
-          <div className="space-y-4 text-gray-700 text-base leading-relaxed">
+          <div className="space-y-5 text-gray-700 text-lg sm:text-xl leading-relaxed max-w-4xl">
             {storyAndRoots.narrative.map((paragraph, idx) => (
               <p key={idx}>
                 {paragraph}
@@ -105,30 +106,30 @@ export default function AboutPage() {
       {/* 3. Leadership Letter */}
       <LeadershipLetter />
 
-      {/* 4. Mission & Vision: Clean Two-Column Layout */}
-      <section className="py-16 sm:py-24 bg-white border-b border-gray-200">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-            <div className="p-6 rounded-lg bg-gray-50 border border-gray-200 space-y-3">
-              <span className="text-xs font-semibold uppercase tracking-wider text-primary-700 block">
+      {/* 4. Mission & Vision: Clean Elevated Cards */}
+      <section className="py-20 sm:py-28 bg-white border-b border-gray-200">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+            <div className="p-8 sm:p-10 rounded-2xl bg-[#fafafa] border border-gray-200 shadow-xs space-y-4">
+              <span className="text-xs sm:text-sm font-bold uppercase tracking-widest text-emerald-800 bg-emerald-100/70 px-3.5 py-1.5 rounded-full border border-emerald-200 inline-block">
                 Our Purpose
               </span>
-              <h3 className="text-xl font-bold font-heading text-gray-900">
+              <h3 className="text-2xl sm:text-3xl font-bold font-heading text-gray-900">
                 Mission Statement
               </h3>
-              <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
+              <p className="text-base sm:text-lg text-gray-700 leading-relaxed font-normal">
                 {mission}
               </p>
             </div>
 
-            <div className="p-6 rounded-lg bg-gray-50 border border-gray-200 space-y-3">
-              <span className="text-xs font-semibold uppercase tracking-wider text-primary-700 block">
+            <div className="p-8 sm:p-10 rounded-2xl bg-[#fafafa] border border-gray-200 shadow-xs space-y-4">
+              <span className="text-xs sm:text-sm font-bold uppercase tracking-widest text-amber-800 bg-amber-100/70 px-3.5 py-1.5 rounded-full border border-amber-200 inline-block">
                 Long-Term Outlook
               </span>
-              <h3 className="text-xl font-bold font-heading text-gray-900">
+              <h3 className="text-2xl sm:text-3xl font-bold font-heading text-gray-900">
                 Vision Statement
               </h3>
-              <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
+              <p className="text-base sm:text-lg text-gray-700 leading-relaxed font-normal">
                 {vision}
               </p>
             </div>
@@ -137,38 +138,40 @@ export default function AboutPage() {
       </section>
 
       {/* 5. The STRIVE Framework */}
-      <section className="py-16 sm:py-24 bg-[#faf9f5] border-b border-gray-200">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl mb-10">
-            <span className="text-xs font-semibold uppercase tracking-wider text-primary-700 block mb-1">
+      <section className="py-20 sm:py-28 bg-[#fbfbf9] border-b border-gray-200">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-3xl mb-12">
+            <span className="text-xs sm:text-sm font-bold uppercase tracking-widest text-emerald-800 bg-emerald-50 px-3.5 py-1.5 rounded-full border border-emerald-200 inline-block mb-3">
               Operational Framework
             </span>
-            <h2 className="text-2xl sm:text-3xl font-bold font-heading text-gray-900 tracking-tight">
+            <h2 className="text-3xl sm:text-5xl font-extrabold font-heading text-gray-900 tracking-tight">
               The Meaning of STRIVE
             </h2>
-            <p className="mt-2 text-sm sm:text-base text-gray-600">
-              Each letter represents a practical commitment we make to every young person who walks through our doors.
+            <p className="mt-3 text-lg sm:text-xl text-gray-600 leading-relaxed">
+              Each letter represents a practical commitment we make to every young person and new Muslim who walks through our doors.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {striveInitiative.meaning.map((pillar) => (
               <div
                 key={pillar.letter}
-                className="p-5 rounded-lg bg-white border border-gray-200"
+                className="p-7 rounded-2xl bg-white border border-gray-200 shadow-xs hover:shadow-md hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between"
               >
-                <div className="flex items-center space-x-2.5 mb-2">
-                  <span className="w-7 h-7 rounded bg-primary-700 text-white font-bold text-sm flex items-center justify-center">
-                    {pillar.letter}
-                  </span>
-                  <h3 className="text-base font-bold text-gray-900 font-heading">
-                    {pillar.word}
-                  </h3>
+                <div>
+                  <div className="flex items-center space-x-3 mb-3">
+                    <span className="w-10 h-10 rounded-xl bg-emerald-800 text-white font-bold text-lg flex items-center justify-center font-heading">
+                      {pillar.letter}
+                    </span>
+                    <h3 className="text-xl font-bold text-gray-900 font-heading">
+                      {pillar.word}
+                    </h3>
+                  </div>
+                  <p className="text-base text-gray-700 font-medium mb-3">
+                    {pillar.description}
+                  </p>
                 </div>
-                <p className="text-xs sm:text-sm font-medium text-gray-800 mb-2">
-                  {pillar.description}
-                </p>
-                <p className="text-xs text-gray-600 leading-relaxed border-t border-gray-100 pt-2">
+                <p className="text-sm text-gray-600 leading-relaxed border-t border-gray-100 pt-3">
                   {pillar.inAction}
                 </p>
               </div>
@@ -178,31 +181,31 @@ export default function AboutPage() {
       </section>
 
       {/* 6. Core Objectives & Structure */}
-      <section className="py-16 sm:py-24 bg-white border-b border-gray-200">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl mb-10">
-            <span className="text-xs font-semibold uppercase tracking-wider text-primary-700 block mb-1">
+      <section className="py-20 sm:py-28 bg-white border-b border-gray-200">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-3xl mb-12">
+            <span className="text-xs sm:text-sm font-bold uppercase tracking-widest text-emerald-800 bg-emerald-50 px-3.5 py-1.5 rounded-full border border-emerald-200 inline-block mb-3">
               Objectives & Focus
             </span>
-            <h2 className="text-2xl sm:text-3xl font-bold font-heading text-gray-900 tracking-tight">
+            <h2 className="text-3xl sm:text-5xl font-extrabold font-heading text-gray-900 tracking-tight">
               Key Strategic Goals
             </h2>
-            <p className="mt-2 text-sm sm:text-base text-gray-600">
+            <p className="mt-3 text-lg sm:text-xl text-gray-600 leading-relaxed">
               Measurable commitments guiding our educational circles, mentor deployment, and community partnerships.
             </p>
           </div>
 
-          <div className="space-y-3">
+          <div className="space-y-4">
             {coreObjectives.map((obj, idx) => (
-              <div key={idx} className="p-4 rounded-lg bg-gray-50 border border-gray-200 flex items-start space-x-4">
-                <span className="text-base font-bold text-primary-700 font-mono flex-shrink-0 mt-0.5">
+              <div key={idx} className="p-6 rounded-2xl bg-gray-50/70 border border-gray-200 flex items-start space-x-5 hover:bg-white hover:shadow-xs transition-all">
+                <span className="text-xl font-extrabold text-emerald-800 font-mono flex-shrink-0 mt-0.5">
                   0{obj.number}
                 </span>
                 <div>
-                  <h3 className="font-bold text-gray-900 text-sm sm:text-base">
+                  <h3 className="font-bold text-gray-900 text-lg sm:text-xl">
                     {obj.title}
                   </h3>
-                  <p className="text-xs sm:text-sm text-gray-600 mt-1 leading-relaxed">
+                  <p className="text-base text-gray-600 mt-1.5 leading-relaxed font-normal">
                     {obj.description}
                   </p>
                 </div>
@@ -213,66 +216,66 @@ export default function AboutPage() {
       </section>
 
       {/* 7. Ejisu Community Center Information */}
-      <section className="py-16 sm:py-24 bg-[#faf9f5] border-b border-gray-200">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-white rounded-xl p-8 sm:p-10 border border-gray-200 shadow-xs">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-              <div className="space-y-4">
-                <span className="text-xs font-semibold uppercase tracking-wider text-primary-700 block">
+      <section className="py-20 sm:py-28 bg-[#fbfbf9] border-b border-gray-200">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="bg-white rounded-2xl p-8 sm:p-12 border border-gray-200 shadow-sm">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+              <div className="space-y-5">
+                <span className="text-xs sm:text-sm font-bold uppercase tracking-widest text-emerald-800 bg-emerald-50 px-3.5 py-1.5 rounded-full border border-emerald-200 inline-block">
                   Visiting Us
                 </span>
-                <h2 className="text-2xl font-bold font-heading text-gray-900">
+                <h2 className="text-3xl sm:text-4xl font-extrabold font-heading text-gray-900">
                   The Strive Center in Ejisuman
                 </h2>
-                <p className="text-sm text-gray-700 leading-relaxed">
-                  Our center is not a distant administrative office; it is a welcoming home for youth and converts. If you are exploring Islam, need a quiet place to study, or want to speak with an older brother, our doors are open.
+                <p className="text-base sm:text-lg text-gray-700 leading-relaxed font-normal">
+                  Our center is not a distant administrative office; it is a welcoming home for youth, converts, and orphans. If you are exploring Islam, need a quiet place to study, or want to speak with a mentor, our doors are open.
                 </p>
                 
-                <div className="space-y-2 text-xs sm:text-sm text-gray-600 pt-1">
-                  <div className="flex items-start space-x-2">
-                    <MapPin size={16} className="text-primary-700 flex-shrink-0 mt-0.5" />
+                <div className="space-y-3 text-base text-gray-600 pt-2">
+                  <div className="flex items-start space-x-3">
+                    <MapPin size={20} className="text-emerald-700 flex-shrink-0 mt-0.5" />
                     <span>{contact.address.street}, {contact.address.town}, Ashanti Region</span>
                   </div>
-                  <div className="flex items-center space-x-2">
-                    <Phone size={15} className="text-primary-700 flex-shrink-0" />
-                    <span>Call: {contact.phoneDisplay}</span>
+                  <div className="flex items-center space-x-3">
+                    <Phone size={18} className="text-emerald-700 flex-shrink-0" />
+                    <span>Call: <strong className="text-gray-900">{contact.phoneDisplay}</strong></span>
                   </div>
-                  <div className="flex items-center space-x-2">
-                    <MessageCircle size={15} className="text-emerald-700 flex-shrink-0" />
-                    <span>WhatsApp: {contact.phoneDisplay}</span>
+                  <div className="flex items-center space-x-3">
+                    <MessageCircle size={18} className="text-emerald-700 flex-shrink-0" />
+                    <span>WhatsApp: <strong className="text-gray-900">{contact.phoneDisplay}</strong></span>
                   </div>
                 </div>
               </div>
 
-              <div className="p-6 rounded-lg bg-gray-50 border border-gray-200 space-y-4">
-                <h3 className="text-base font-bold text-gray-900">
+              <div className="p-7 sm:p-8 rounded-2xl bg-gray-50 border border-gray-200 space-y-5">
+                <h3 className="text-xl font-bold text-gray-900 font-heading">
                   Weekly Center Hours
                 </h3>
-                <ul className="text-xs sm:text-sm text-gray-600 space-y-2">
-                  <li className="flex justify-between pb-1 border-b border-gray-200">
+                <ul className="text-sm sm:text-base text-gray-600 space-y-3">
+                  <li className="flex justify-between pb-2 border-b border-gray-200">
                     <span>Monday – Thursday:</span>
-                    <span className="font-medium text-gray-800">4:00 PM – 7:30 PM (Mentoring)</span>
+                    <span className="font-semibold text-gray-900">4:00 PM – 7:30 PM</span>
                   </li>
-                  <li className="flex justify-between pb-1 border-b border-gray-200">
+                  <li className="flex justify-between pb-2 border-b border-gray-200">
                     <span>Friday:</span>
-                    <span className="font-medium text-gray-800">Jumu'ah & Youth Circle</span>
+                    <span className="font-semibold text-gray-900">Jumu'ah & Youth Circle</span>
                   </li>
-                  <li className="flex justify-between pb-1 border-b border-gray-200">
+                  <li className="flex justify-between pb-2 border-b border-gray-200">
                     <span>Saturday:</span>
-                    <span className="font-medium text-gray-800">9:00 AM – 1:00 PM (Classes)</span>
+                    <span className="font-semibold text-gray-900">9:00 AM – 1:00 PM</span>
                   </li>
                   <li className="flex justify-between">
                     <span>Sunday:</span>
-                    <span className="font-medium text-gray-800">2:00 PM – 5:30 PM (Convert Circle)</span>
+                    <span className="font-semibold text-gray-900">2:00 PM – 5:30 PM</span>
                   </li>
                 </ul>
 
                 <Link
                   href="/contact"
-                  className="w-full py-2.5 px-4 bg-primary-700 hover:bg-primary-800 text-white font-medium text-xs rounded-md flex items-center justify-center space-x-1.5 transition-colors"
+                  className="w-full py-3.5 px-5 bg-emerald-800 hover:bg-emerald-900 text-white font-semibold text-base rounded-xl flex items-center justify-center space-x-2 transition-all shadow-xs"
                 >
                   <span>Plan a Visit or Contact Us</span>
-                  <ArrowRight size={13} />
+                  <ArrowRight size={16} />
                 </Link>
               </div>
             </div>
@@ -280,25 +283,25 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* 8. Call to Action */}
-      <section className="py-14 sm:py-18 bg-[#0b291a] text-white border-t border-[#17432b]">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
-          <h2 className="text-2xl sm:text-3xl font-bold font-heading text-white">
+      {/* 8. Modern Call to Action */}
+      <section className="py-20 sm:py-28 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-white border-t border-slate-800">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
+          <h2 className="text-3xl sm:text-5xl font-extrabold font-heading text-white tracking-tight">
             Support Our Grassroots Work in Ejisu
           </h2>
-          <p className="text-base sm:text-lg text-gray-200 max-w-xl mx-auto leading-relaxed">
-            Every contribution directly funds Quran copies, student sponsorship, and convert emergency assistance.
+          <p className="text-lg sm:text-xl text-gray-300 max-w-2xl mx-auto leading-relaxed">
+            Every contribution directly funds Quran copies, student sponsorship, orphan nutrition, and convert emergency assistance.
           </p>
-          <div className="pt-2 flex flex-wrap gap-3 justify-center">
+          <div className="pt-3 flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/donate"
-              className="px-5 py-2.5 bg-primary-600 hover:bg-primary-500 text-white font-medium rounded-md text-sm transition-colors"
+              className="px-8 py-4 bg-amber-600 hover:bg-amber-500 text-white font-bold rounded-xl text-base sm:text-lg transition-all shadow-md hover:-translate-y-0.5"
             >
               Make a Donation
             </Link>
             <Link
               href="/get-involved"
-              className="px-5 py-2.5 bg-transparent border border-gray-400 hover:bg-white/10 text-white font-medium rounded-md text-sm transition-colors"
+              className="px-8 py-4 bg-white/10 hover:bg-white/20 border border-white/25 text-white font-bold rounded-xl text-base sm:text-lg transition-all backdrop-blur-xs hover:-translate-y-0.5"
             >
               Volunteer as a Mentor
             </Link>

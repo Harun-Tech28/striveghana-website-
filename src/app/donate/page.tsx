@@ -28,16 +28,16 @@ export default function DonatePage() {
   return (
     <div className="space-y-0">
       {/* 1. Page Header */}
-      <section className="bg-[#0b291a] text-white py-14 sm:py-20 border-b border-[#17432b]">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="space-y-3">
-            <span className="text-xs sm:text-sm font-semibold uppercase tracking-wider text-accent-gold block">
+      <section className="bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-white py-16 sm:py-24 border-b border-slate-800">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="space-y-4">
+            <span className="text-xs sm:text-sm font-bold uppercase tracking-widest text-amber-300 bg-white/10 px-3.5 py-1.5 rounded-full border border-white/15 inline-block">
               Donations & Sponsorships
             </span>
-            <h1 className="text-3xl sm:text-5xl font-bold font-heading tracking-tight text-white">
+            <h1 className="text-4xl sm:text-6xl font-extrabold font-heading tracking-tight text-white leading-tight">
               Support Strive Ghana
             </h1>
-            <p className="text-lg sm:text-xl text-gray-200 max-w-2xl leading-relaxed pt-1">
+            <p className="text-lg sm:text-2xl text-gray-200 max-w-3xl leading-relaxed pt-1 font-normal">
               Your donations directly sustain new Muslim converts with emergency relief, welcome kits, and mentorship, and provide daily meals, shelter, and schooling for Muslim orphans in Ejisuman, Ashanti Region.
             </p>
           </div>

@@ -18,38 +18,38 @@ const ProgramCard = ({ title, subtitle, description, activities, link, index = 0
   const trackBadge = trackLabels[index] || `Track 0${index + 1}`
 
   return (
-    <div className="bg-white rounded-lg p-6 sm:p-8 border border-gray-200 shadow-xs flex flex-col justify-between transition-all hover:border-gray-300 hover:shadow-sm">
+    <div className="bg-white rounded-2xl p-7 sm:p-9 border border-gray-200/90 shadow-xs hover:shadow-md hover:-translate-y-1 flex flex-col justify-between transition-all duration-200">
       <div>
         {/* Track Label and Title */}
-        <div className="mb-4">
-          <div className="inline-flex items-center px-2.5 py-1 rounded bg-primary-50 text-primary-800 text-xs font-semibold tracking-wider uppercase mb-2.5 border border-primary-100">
+        <div className="mb-5">
+          <div className="inline-flex items-center px-3.5 py-1.5 rounded-full bg-emerald-50 text-emerald-900 text-xs sm:text-sm font-bold tracking-wider uppercase mb-3 border border-emerald-200">
             {trackBadge}
           </div>
-          <h3 className="text-xl sm:text-2xl font-bold font-heading text-gray-900 leading-snug">
+          <h3 className="text-2xl sm:text-3xl font-bold font-heading text-gray-900 leading-snug">
             {title}
           </h3>
           {subtitle && (
-            <p className="text-xs sm:text-sm text-gray-600 font-medium mt-1 leading-normal">
+            <p className="text-sm sm:text-base text-gray-600 font-medium mt-1.5 leading-normal">
               {subtitle}
             </p>
           )}
         </div>
 
         {/* Description */}
-        <p className="text-gray-700 text-sm sm:text-base leading-relaxed mb-6">
+        <p className="text-base sm:text-lg text-gray-700 leading-relaxed mb-6 font-normal">
           {description}
         </p>
 
         {/* Activities List */}
-        <div className="mb-6 bg-gray-50 p-4 sm:p-5 rounded-lg border border-gray-100">
-          <h4 className="text-xs font-semibold text-gray-800 uppercase tracking-wide mb-2.5">
-            Key Program Focus:
+        <div className="mb-6 bg-slate-50/80 p-5 sm:p-6 rounded-xl border border-gray-100">
+          <h4 className="text-xs sm:text-sm font-bold text-gray-900 uppercase tracking-wider mb-3">
+            Core Program Focus:
           </h4>
-          <ul className="space-y-2">
+          <ul className="space-y-2.5">
             {activities.map((activity, idx) => (
-              <li key={idx} className="text-gray-700 text-xs sm:text-sm flex items-start space-x-2.5">
-                <Check size={16} className="text-emerald-700 flex-shrink-0 mt-0.5" />
-                <span className="leading-snug">{activity}</span>
+              <li key={idx} className="text-gray-700 text-sm sm:text-base flex items-start space-x-3">
+                <Check size={18} className="text-emerald-700 flex-shrink-0 mt-0.5" />
+                <span className="leading-relaxed">{activity}</span>
               </li>
             ))}
           </ul>
@@ -57,15 +57,17 @@ const ProgramCard = ({ title, subtitle, description, activities, link, index = 0
       </div>
 
       {/* Action Link */}
-      <div className="pt-4 border-t border-gray-100 flex items-center justify-between text-xs sm:text-sm">
+      <div className="pt-5 border-t border-gray-100 flex items-center justify-between text-sm sm:text-base">
         <Link
           href={link}
-          className="text-primary-700 hover:text-primary-800 font-semibold flex items-center space-x-1.5 transition-colors"
+          className="text-emerald-800 hover:text-emerald-900 font-bold flex items-center space-x-2 transition-colors"
         >
-          <span>View program details</span>
-          <ArrowRight size={14} />
+          <span>View program schedule</span>
+          <ArrowRight size={16} />
         </Link>
-        <span className="text-gray-500 font-medium">Ejisuman Center</span>
+        <span className="text-xs sm:text-sm text-gray-500 font-semibold bg-gray-100 px-3 py-1 rounded-full">
+          Ejisuman Center
+        </span>
       </div>
     </div>
   )

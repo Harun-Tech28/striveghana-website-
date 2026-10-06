@@ -29,17 +29,17 @@ export default function ProgramsPage() {
   return (
     <div className="space-y-0">
       {/* 1. Clean Page Header */}
-      <section className="bg-[#0b291a] text-white py-14 sm:py-20 border-b border-[#17432b]">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="space-y-3">
-            <span className="text-xs sm:text-sm font-semibold uppercase tracking-wider text-accent-gold block">
+      <section className="bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-white py-16 sm:py-24 border-b border-slate-800">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="space-y-4">
+            <span className="text-xs sm:text-sm font-bold uppercase tracking-widest text-amber-300 bg-white/10 px-3.5 py-1.5 rounded-full border border-white/15 inline-block">
               Strive Ghana Activities
             </span>
-            <h1 className="text-3xl sm:text-5xl font-bold font-heading tracking-tight text-white">
+            <h1 className="text-4xl sm:text-6xl font-extrabold font-heading tracking-tight text-white leading-tight">
               Our Core Educational & Mentorship Programs
             </h1>
-            <p className="text-lg sm:text-xl text-gray-200 max-w-2xl leading-relaxed pt-1">
-              Structured weekly programs providing step-by-step guidance for new Muslim converts and holistic character development for young people.
+            <p className="text-lg sm:text-2xl text-gray-200 max-w-3xl leading-relaxed pt-1 font-normal">
+              Structured weekly programs providing step-by-step guidance for new Muslim converts, orphan children, and youth across Ejisuman.
             </p>
           </div>
         </div>
@@ -227,24 +227,24 @@ export default function ProgramsPage() {
       </section>
 
       {/* 5. Call to Action */}
-      <section className="py-14 sm:py-18 bg-[#0b291a] text-white border-t border-[#17432b]">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
-          <h2 className="text-2xl sm:text-3xl font-bold font-heading text-white">
+      <section className="py-20 sm:py-28 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-white border-t border-slate-800">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
+          <h2 className="text-3xl sm:text-5xl font-extrabold font-heading text-white tracking-tight">
             Want to Join or Sponsor a Student?
           </h2>
-          <p className="text-base sm:text-lg text-gray-200 max-w-xl mx-auto leading-relaxed">
-            Attendance is completely free for all youth and converts. If you would like to help us cover textbook and meal costs, consider sponsoring a student.
+          <p className="text-lg sm:text-xl text-gray-300 max-w-2xl mx-auto leading-relaxed">
+            Attendance is completely free for all youth, converts, and orphans. If you would like to help us cover textbook and meal costs, consider sponsoring a student.
           </p>
-          <div className="pt-2 flex flex-wrap gap-3 justify-center">
+          <div className="pt-3 flex flex-wrap gap-4 justify-center">
             <Link
               href="/donate"
-              className="px-5 py-2.5 bg-primary-600 hover:bg-primary-500 text-white font-medium rounded-md text-sm transition-colors"
+              className="px-8 py-4 bg-amber-600 hover:bg-amber-500 text-white font-bold rounded-xl text-base sm:text-lg transition-all shadow-md hover:-translate-y-0.5"
             >
               Sponsor a Student ($25/mo)
             </Link>
             <Link
               href="/contact"
-              className="px-5 py-2.5 bg-transparent border border-gray-400 hover:bg-white/10 text-white font-medium rounded-md text-sm transition-colors"
+              className="px-8 py-4 bg-white/10 hover:bg-white/20 border border-white/25 text-white font-bold rounded-xl text-base sm:text-lg transition-all backdrop-blur-xs hover:-translate-y-0.5"
             >
               Contact Coordinators
             </Link>
