@@ -53,8 +53,8 @@ export default function GetInvolvedPage() {
       <section className="py-14 sm:py-20 bg-white border-b border-gray-200">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="p-6 sm:p-8 rounded-lg bg-gray-50 border border-gray-200 flex flex-col sm:flex-row items-start gap-5">
-            <div className="w-10 h-10 rounded-md bg-primary-50 text-primary-800 flex items-center justify-center flex-shrink-0 border border-primary-100">
-              <Heart size={20} className="text-primary-700" />
+            <div className="w-10 h-10 rounded-md bg-amber-50 text-amber-800 flex items-center justify-center flex-shrink-0 border border-amber-200">
+              <Heart size={20} className="text-amber-600" />
             </div>
             <div className="space-y-2">
               <h3 className="text-lg font-bold font-heading text-gray-900">
@@ -72,7 +72,7 @@ export default function GetInvolvedPage() {
       <section className="py-16 sm:py-24 bg-[#faf9f5] border-b border-gray-200">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
           <div>
-            <span className="text-xs font-semibold uppercase tracking-wider text-primary-700 block mb-1">
+            <span className="text-xs font-semibold uppercase tracking-wider text-amber-800 block mb-1">
               Ways to Serve
             </span>
             <h2 className="text-2xl sm:text-3xl font-bold font-heading text-gray-900 tracking-tight">
@@ -111,7 +111,7 @@ export default function GetInvolvedPage() {
       <section className="py-16 sm:py-24 bg-white border-b border-gray-200">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
           <div>
-            <span className="text-xs font-semibold uppercase tracking-wider text-primary-700 block mb-1">
+            <span className="text-xs font-semibold uppercase tracking-wider text-amber-800 block mb-1">
               Next Steps
             </span>
             <h2 className="text-2xl sm:text-3xl font-bold font-heading text-gray-900 tracking-tight">
@@ -121,7 +121,7 @@ export default function GetInvolvedPage() {
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 text-sm">
             <div className="p-5 rounded-lg bg-gray-50 border border-gray-200 space-y-2">
-              <span className="w-7 h-7 rounded bg-primary-700 text-white font-bold text-xs flex items-center justify-center font-mono">
+              <span className="w-7 h-7 rounded bg-amber-500 text-slate-950 font-bold text-xs flex items-center justify-center font-mono">
                 1
               </span>
               <h4 className="font-bold text-gray-900">Reach Out</h4>
@@ -131,7 +131,7 @@ export default function GetInvolvedPage() {
             </div>
 
             <div className="p-5 rounded-lg bg-gray-50 border border-gray-200 space-y-2">
-              <span className="w-7 h-7 rounded bg-primary-700 text-white font-bold text-xs flex items-center justify-center font-mono">
+              <span className="w-7 h-7 rounded bg-amber-500 text-slate-950 font-bold text-xs flex items-center justify-center font-mono">
                 2
               </span>
               <h4 className="font-bold text-gray-900">Meet in Ejisu</h4>
@@ -141,7 +141,7 @@ export default function GetInvolvedPage() {
             </div>
 
             <div className="p-5 rounded-lg bg-gray-50 border border-gray-200 space-y-2">
-              <span className="w-7 h-7 rounded bg-primary-700 text-white font-bold text-xs flex items-center justify-center font-mono">
+              <span className="w-7 h-7 rounded bg-amber-500 text-slate-950 font-bold text-xs flex items-center justify-center font-mono">
                 3
               </span>
               <h4 className="font-bold text-gray-900">Begin Mentoring</h4>

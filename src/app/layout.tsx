@@ -1,9 +1,10 @@
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import { Inter, Poppins } from 'next/font/google'
 import './globals.css'
 import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
 import CommunityFloatingWidget from '@/components/ui/CommunityFloatingWidget'
+import StickyMobileBar from '@/components/ui/StickyMobileBar'
 import ScrollToTop from '@/components/ui/ScrollToTop'
 import ToastNotification from '@/components/ui/ToastNotification'
 
@@ -13,6 +14,12 @@ const poppins = Poppins({
   weight: ['300', '400', '500', '600', '700'],
   variable: '--font-poppins'
 })
+
+export const viewport: Viewport = {
+  themeColor: '#bc9646',
+  width: 'device-width',
+  initialScale: 1,
+}
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://striveghana.org'),
@@ -74,6 +81,7 @@ export default function RootLayout({
         </main>
         <Footer />
         <CommunityFloatingWidget />
+        <StickyMobileBar />
         <ScrollToTop />
         <ToastNotification />
       </body>

@@ -54,7 +54,7 @@ export default function DonatePage() {
                 className="p-5 rounded-lg bg-gray-50 border border-gray-200 flex flex-col justify-between"
               >
                 <div>
-                  <span className="text-xs font-bold text-primary-800 uppercase tracking-wide block mb-1">
+                  <span className="text-xs font-bold text-amber-800 uppercase tracking-wide block mb-1">
                     {item.highlight}
                   </span>
                   <h3 className="text-base font-bold text-gray-900 font-heading mb-1.5">
@@ -66,7 +66,7 @@ export default function DonatePage() {
                 </div>
                 <a
                   href="#donate-form"
-                  className="text-xs font-semibold text-primary-700 hover:text-primary-800 flex items-center space-x-1"
+                  className="text-xs font-semibold text-amber-700 hover:text-amber-800 flex items-center space-x-1"
                 >
                   <span>Give towards this</span>
                   <ArrowRight size={12} />
@@ -99,7 +99,7 @@ export default function DonatePage() {
                   <button
                     type="button"
                     onClick={() => copyToClipboard('0542524571', 'momo')}
-                    className="inline-flex items-center space-x-1 text-xs text-primary-700 hover:text-primary-800 font-medium"
+                    className="inline-flex items-center space-x-1 text-xs text-amber-700 hover:text-amber-800 font-medium"
                   >
                     {copiedMoMo ? <Check size={14} className="text-emerald-600" /> : <Copy size={14} />}
                     <span>{copiedMoMo ? 'Copied' : 'Copy Number'}</span>
@@ -139,7 +139,7 @@ export default function DonatePage() {
                   <button
                     type="button"
                     onClick={() => copyToClipboard('9040001870275', 'bank')}
-                    className="inline-flex items-center space-x-1 text-xs text-primary-700 hover:text-primary-800 font-medium"
+                    className="inline-flex items-center space-x-1 text-xs text-amber-700 hover:text-amber-800 font-medium"
                   >
                     {copiedBank ? <Check size={14} className="text-emerald-600" /> : <Copy size={14} />}
                     <span>{copiedBank ? 'Copied' : 'Copy Account'}</span>
@@ -183,7 +183,7 @@ export default function DonatePage() {
       <section className="py-16 sm:py-24 bg-white border-b border-gray-200">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
           <div>
-            <span className="text-xs font-semibold uppercase tracking-wider text-primary-700 block mb-1">
+            <span className="text-xs font-semibold uppercase tracking-wider text-amber-800 block mb-1">
               Calculator
             </span>
             <h2 className="text-2xl sm:text-3xl font-bold font-heading text-gray-900 tracking-tight">

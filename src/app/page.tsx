@@ -16,6 +16,9 @@ import {
   BookOpen
 } from 'lucide-react'
 import Hero from '@/components/ui/Hero'
+import TrustBar from '@/components/ui/TrustBar'
+import ImpactStories from '@/components/ui/ImpactStories'
+import FaqSection from '@/components/ui/FaqSection'
 import DailyAyahReflection from '@/components/ui/DailyAyahReflection'
 import { organizationData } from '@/data/organization'
 
@@ -35,6 +38,9 @@ export default function Home() {
           { text: 'Explore Programs', href: '/programs', variant: 'outline' }
         ]}
       />
+
+      {/* 2. Executive Credibility & Trust Bar */}
+      <TrustBar />
 
       {/* 2. Personal Welcome from Dr. Salis & Community Center (Humanizing the Mission) */}
       <section className="py-20 sm:py-28 lg:py-32 bg-white border-b border-slate-100">
@@ -486,7 +492,13 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 7. Daily Spiritual Ayah */}
+      {/* 7. Community Reflections & Impact Stories */}
+      <ImpactStories />
+
+      {/* 8. Frequently Asked Questions (Accordion) */}
+      <FaqSection />
+
+      {/* 9. Daily Spiritual Ayah */}
       <section className="py-20 sm:py-24 bg-slate-50/70 border-b border-slate-200/80">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <DailyAyahReflection />

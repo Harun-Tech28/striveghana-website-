@@ -83,10 +83,10 @@ export default function ContactPage() {
                 {/* Phone */}
                 <div className="flex items-center justify-between pb-3 border-b border-gray-100">
                   <div className="flex items-center space-x-3">
-                    <Phone size={18} className="text-primary-700 flex-shrink-0" />
+                    <Phone size={18} className="text-amber-700 flex-shrink-0" />
                     <div>
                       <strong className="text-gray-900 block">Phone / MoMo Line</strong>
-                      <a href={`tel:${contact.phone}`} className="text-gray-700 hover:text-primary-700">
+                      <a href={`tel:${contact.phone}`} className="text-gray-700 hover:text-amber-700">
                         {contact.phoneDisplay}
                       </a>
                     </div>
@@ -94,7 +94,7 @@ export default function ContactPage() {
                   <button
                     type="button"
                     onClick={() => copyText(contact.phoneDisplay, 'phone')}
-                    className="text-xs text-gray-400 hover:text-primary-700 p-1"
+                    className="text-xs text-gray-400 hover:text-amber-700 p-1"
                     title="Copy phone number"
                   >
                     {copiedPhone ? <Check size={14} className="text-emerald-600" /> : <Copy size={14} />}
@@ -120,10 +120,10 @@ export default function ContactPage() {
                 {/* Email */}
                 <div className="flex items-center justify-between">
                   <div className="flex items-center space-x-3">
-                    <Mail size={18} className="text-primary-700 flex-shrink-0" />
+                    <Mail size={18} className="text-amber-700 flex-shrink-0" />
                     <div>
                       <strong className="text-gray-900 block">Email</strong>
-                      <a href={`mailto:${contact.email}`} className="text-gray-700 hover:text-primary-700">
+                      <a href={`mailto:${contact.email}`} className="text-gray-700 hover:text-amber-700">
                         {contact.email}
                       </a>
                     </div>
@@ -131,7 +131,7 @@ export default function ContactPage() {
                   <button
                     type="button"
                     onClick={() => copyText(contact.email, 'email')}
-                    className="text-xs text-gray-400 hover:text-primary-700 p-1"
+                    className="text-xs text-gray-400 hover:text-amber-700 p-1"
                     title="Copy email"
                   >
                     {copiedEmail ? <Check size={14} className="text-emerald-600" /> : <Copy size={14} />}
