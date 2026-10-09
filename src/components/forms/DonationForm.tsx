@@ -49,23 +49,23 @@ const ensurePaystackScript = (): Promise<boolean> => {
 function DonationFormInner() {
   const searchParams = useSearchParams()
   const [currency, setCurrency] = useState<'GHS' | 'USD'>('GHS')
-  const [selectedAmount, setSelectedAmount] = useState<number | 'custom'>(150)
+  const [selectedAmount, setSelectedAmount] = useState<number | 'custom'>(250)
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
   const [isProcessing, setIsProcessing] = useState(false)
   const [copiedMomo, setCopiedMomo] = useState(false)
 
   const predefinedGHS = [
-    { amount: 100, label: '₵100', impact: 'Convert welcome kit & Quran' },
-    { amount: 250, label: '₵250', impact: 'Orphan monthly food supply' },
-    { amount: 380, label: '₵380', impact: 'Sponsor an orphan (Yateem) / mo' },
-    { amount: 1000, label: '₵1,000', impact: 'Emergency convert relief & shelter' },
+    { amount: 100, label: '₵100', impact: 'Convert welcome kit & Quran', badge: '' },
+    { amount: 250, label: '₵250', impact: 'Orphan monthly food supply', badge: 'Most Popular' },
+    { amount: 380, label: '₵380', impact: 'Sponsor an orphan (Yateem) / mo', badge: '' },
+    { amount: 1000, label: '₵1,000', impact: 'Emergency convert relief & shelter', badge: '' },
   ]
 
   const predefinedUSD = [
-    { amount: 15, label: '$15', impact: 'Convert welcome kit & Quran' },
-    { amount: 30, label: '$30', impact: 'Sponsor an orphan (Yateem) / mo' },
-    { amount: 50, label: '$50', impact: 'Revert emergency relief & shelter' },
-    { amount: 100, label: '$100', impact: 'Orphanage food & medical fund' },
+    { amount: 15, label: '$15', impact: 'Convert welcome kit & Quran', badge: '' },
+    { amount: 30, label: '$30', impact: 'Sponsor an orphan (Yateem) / mo', badge: 'Most Popular' },
+    { amount: 50, label: '$50', impact: 'Revert emergency relief & shelter', badge: '' },
+    { amount: 100, label: '$100', impact: 'Orphanage food & medical fund', badge: '' },
   ]
 
   const amountsList = currency === 'GHS' ? predefinedGHS : predefinedUSD
@@ -76,30 +76,34 @@ function DonationFormInner() {
     watch,
     setValue,
     reset,
-    formState: { errors, isValid }
+    formState: { errors }
   } = useForm<DonationFormData>({
     mode: 'onChange',
     defaultValues: {
-      amount: 150,
+      amount: 250,
       frequency: 'once',
-      donationType: 'general',
+      donationType: 'convert',
       paymentMethod: 'paystack'
     }
   })
 
-  // Prefill from URL query parameters (e.g. ?amount=25&frequency=monthly&purpose=youth&currency=USD)
+  // Prefill from URL query parameters (e.g. ?amount=250&frequency=monthly&purpose=orphan&currency=GHS)
   useEffect(() => {
     if (!searchParams) return
 
     const paramCurrency = searchParams.get('currency')?.toUpperCase()
     if (paramCurrency === 'USD') {
       setCurrency('USD')
+      setSelectedAmount(30)
+      setValue('amount', 30)
     } else if (paramCurrency === 'GHS') {
       setCurrency('GHS')
+      setSelectedAmount(250)
+      setValue('amount', 250)
     }
 
     const paramPurpose = searchParams.get('purpose')?.toLowerCase()
-    if (paramPurpose && ['general', 'convert', 'youth', 'zakat', 'sadaqat'].includes(paramPurpose)) {
+    if (paramPurpose && ['general', 'convert', 'youth', 'orphan', 'zakat', 'sadaqat'].includes(paramPurpose)) {
       setValue('donationType', paramPurpose as any)
     }
 
@@ -127,7 +131,7 @@ function DonationFormInner() {
   const watchFrequency = watch('frequency')
   const watchDonationType = watch('donationType')
   const watchPaymentMethod = watch('paymentMethod')
-  const watchEmail = watch('email')
+  const watchCustomAmount = watch('customAmount')
   const watchDonorName = watch('donorName')
 
   // Resolve sanitized Paystack public key
@@ -136,7 +140,7 @@ function DonationFormInner() {
   const paystackPublicKey = isRealKey ? envKey : 'pk_test_573f55ec926ffe2953741d0e71614fc17768ddc5'
 
   const currentAmount = selectedAmount === 'custom'
-    ? (Number(watch('customAmount')) || 50)
+    ? (Number(watchCustomAmount) || 50)
     : Number(selectedAmount)
 
   const onSubmit = async (data: DonationFormData) => {
@@ -206,7 +210,7 @@ function DonationFormInner() {
           setSubmitStatus('success')
           triggerToast(`Alhamdulillah! Donation received. Reference: ${response.reference}`, 'success')
           reset()
-          setSelectedAmount(currency === 'GHS' ? 150 : 25)
+          setSelectedAmount(currency === 'GHS' ? 250 : 30)
         },
         onClose: () => {
           setIsProcessing(false)
@@ -229,6 +233,14 @@ function DonationFormInner() {
     }
   }
 
+  const handleCustomAdd = (delta: number) => {
+    setSelectedAmount('custom')
+    const prev = Number(watchCustomAmount) || 0
+    const nextVal = prev + delta
+    setValue('customAmount', nextVal)
+    setValue('amount', nextVal)
+  }
+
   const copyMomoNumber = () => {
     navigator.clipboard.writeText('0542524571')
     setCopiedMomo(true)
@@ -243,400 +255,497 @@ function DonationFormInner() {
         initial={{ opacity: 0, y: 15 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.3 }}
-        className="bg-white rounded-lg shadow-xs border border-gray-200 p-6 sm:p-8 max-w-2xl mx-auto"
+        className="bg-white rounded-2xl sm:rounded-3xl shadow-xl shadow-slate-900/5 border border-slate-200/90 p-4 sm:p-6 md:p-8 max-w-2xl w-full mx-auto"
       >
-      {/* Form Header */}
-      <div className="text-center mb-6">
-        <div className="w-10 h-10 bg-amber-50 text-amber-800 rounded-md flex items-center justify-center mx-auto mb-3 border border-amber-200">
-          <Heart className="w-5 h-5 text-amber-600" />
-        </div>
-        <h3 className="text-xl sm:text-2xl font-bold font-heading text-gray-900 tracking-tight">
-          Make a Donation
-        </h3>
-        <p className="text-gray-600 text-sm mt-2 max-w-md mx-auto leading-relaxed">
-          Every cedi or dollar directly provides Qurans, weekend class meals, and emergency welfare to new converts and youth right here in Ejisuman.
-        </p>
-
-        {/* Currency Switcher */}
-        <div className="inline-flex items-center bg-gray-100 p-1 rounded-xl mt-6 border border-gray-200">
-          <button
-            type="button"
-            onClick={() => {
-              setCurrency('GHS')
-              setSelectedAmount(150)
-              setValue('amount', 150)
-            }}
-            className={`px-4 py-1.5 rounded-lg text-xs font-bold transition-all ${
-              currency === 'GHS'
-                ? 'bg-white text-slate-900 shadow-sm'
-                : 'text-gray-500 hover:text-gray-900'
-            }`}
-          >
-            ₵ Ghana Cedis (GHS)
-          </button>
-          <button
-            type="button"
-            onClick={() => {
-              setCurrency('USD')
-              setSelectedAmount(25)
-              setValue('amount', 25)
-            }}
-            className={`px-4 py-1.5 rounded-lg text-xs font-bold transition-all ${
-              currency === 'USD'
-                ? 'bg-white text-slate-900 shadow-sm'
-                : 'text-gray-500 hover:text-gray-900'
-            }`}
-          >
-            $ US Dollars (USD)
-          </button>
-        </div>
-      </div>
-
-      <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-        {/* 1. Purpose / Donation Type */}
-        <div>
-          <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-2.5">
-            1. Purpose of Donation *
-          </label>
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
-            {[
-              { value: 'convert', label: 'New Converts' },
-              { value: 'orphan', label: 'Orphan Care (Yateem)' },
-              { value: 'zakat', label: 'Zakat (Alms)' },
-              { value: 'sadaqat', label: 'Sadaqah (Charity)' }
-            ].map((type) => (
-              <label
-                key={type.value}
-                className={`flex items-center justify-center p-3 rounded-xl border text-xs font-semibold cursor-pointer text-center transition-all ${
-                  watchDonationType === type.value
-                    ? 'border-amber-600 bg-amber-50 text-amber-900 ring-1 ring-amber-500 shadow-sm'
-                    : 'border-gray-200 hover:border-gray-300 text-gray-700'
-                }`}
-              >
-                <input
-                  type="radio"
-                  value={type.value}
-                  {...register('donationType', { required: true })}
-                  className="sr-only"
-                />
-                <span>{type.label}</span>
-              </label>
-            ))}
+        {/* Form Header */}
+        <div className="text-center mb-6 sm:mb-8">
+          <div className="w-12 h-12 bg-gradient-to-br from-amber-50 to-amber-100/70 text-amber-700 rounded-2xl flex items-center justify-center mx-auto mb-3 border border-amber-300/60 shadow-xs">
+            <Heart className="w-6 h-6 fill-amber-500/20 text-amber-600" />
           </div>
-        </div>
+          <h3 className="text-2xl sm:text-3xl font-black font-heading text-slate-950 tracking-tight">
+            Make a Donation
+          </h3>
+          <p className="text-slate-600 text-xs sm:text-sm mt-2 max-w-md mx-auto leading-relaxed">
+            Every cedi or dollar directly provides Qurans, weekend class meals, and emergency welfare to new converts and youth right here in Ejisuman.
+          </p>
 
-        {/* 2. Giving Frequency */}
-        <div>
-          <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-2.5">
-            2. Giving Frequency *
-          </label>
-          <div className="grid grid-cols-2 gap-3">
-            {[
-              { value: 'once', label: 'One-Time Gift' },
-              { value: 'monthly', label: 'Monthly Sponsorship' }
-            ].map((freq) => (
-              <label
-                key={freq.value}
-                className={`flex items-center justify-center p-3 rounded-xl border text-xs font-semibold cursor-pointer transition-all ${
-                  watchFrequency === freq.value
-                    ? 'border-accent-gold bg-accent-gold/10 text-primary-900 ring-1 ring-accent-gold'
-                    : 'border-gray-200 hover:border-gray-300 text-gray-700'
-                }`}
-              >
-                <input
-                  type="radio"
-                  value={freq.value}
-                  {...register('frequency', { required: true })}
-                  className="sr-only"
-                />
-                <span>{freq.label}</span>
-              </label>
-            ))}
-          </div>
-        </div>
-
-        {/* 3. Amount Selection */}
-        <div>
-          <div className="flex items-center justify-between mb-2.5">
-            <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider">
-              3. Select Amount ({currency}) *
-            </label>
-            {watchFrequency === 'monthly' && (
-              <span className="text-xs text-primary-800 font-bold flex items-center">
-                $30/mo sponsors 1 orphan child
-              </span>
-            )}
-          </div>
-          <div className="grid grid-cols-2 gap-3 mb-3">
-            {amountsList.map((item) => (
-              <button
-                key={item.amount}
-                type="button"
-                onClick={() => handleAmountSelect(item.amount)}
-                className={`p-3.5 rounded-xl border-2 text-left transition-all ${
-                  selectedAmount === item.amount
-                    ? 'border-amber-500 bg-amber-50 text-amber-950 ring-2 ring-amber-400 shadow-sm'
-                    : 'border-gray-200 hover:border-amber-300 hover:bg-amber-50/30 text-gray-800'
-                }`}
-              >
-                <div className="font-extrabold text-lg text-amber-950 font-heading">
-                  {item.label}
-                  {watchFrequency === 'monthly' && <span className="text-xs font-normal text-slate-500">/mo</span>}
-                </div>
-                <p className="text-[11px] text-slate-500 mt-1 line-clamp-1">
-                  {item.impact}
-                </p>
-              </button>
-            ))}
-          </div>
-
-          <div className="flex items-center space-x-3">
+          {/* Currency Switcher */}
+          <div className="inline-flex items-center bg-slate-100 p-1.5 rounded-2xl mt-5 border border-slate-200/80 shadow-xs">
             <button
               type="button"
-              onClick={() => handleAmountSelect('custom')}
-              className={`px-4 py-2.5 rounded-xl border text-xs font-semibold transition-all whitespace-nowrap ${
-                selectedAmount === 'custom'
-                  ? 'border-amber-500 bg-amber-50 text-amber-950 font-bold ring-1 ring-amber-400'
-                  : 'border-gray-200 hover:border-amber-300 text-gray-700'
+              onClick={() => {
+                setCurrency('GHS')
+                setSelectedAmount(250)
+                setValue('amount', 250)
+              }}
+              className={`px-4 sm:px-5 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all ${
+                currency === 'GHS'
+                  ? 'bg-white text-slate-950 shadow-sm'
+                  : 'text-slate-500 hover:text-slate-900'
               }`}
             >
-              Custom Amount
+              ₵ Ghana Cedis (GHS)
             </button>
-            {selectedAmount === 'custom' && (
-              <div className="relative flex-1">
-                <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 font-bold text-sm">
-                  {currency === 'GHS' ? '₵' : '$'}
-                </span>
-                <input
-                  type="number"
-                  min="5"
-                  {...register('customAmount', { required: 'Please enter an amount', min: 5 })}
-                  className="w-full pl-8 pr-4 py-2 text-sm border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-transparent"
-                  placeholder="Enter amount"
-                />
-              </div>
-            )}
-          </div>
-        </div>
-
-        {/* 4. Payment Channel Tabs: Paystack Instant vs Direct MoMo */}
-        <div>
-          <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-2.5">
-            4. Choose How to Pay *
-          </label>
-          <div className="grid grid-cols-2 gap-3">
-            <label
-              className={`p-3.5 rounded-xl border-2 cursor-pointer transition-all flex items-center space-x-3 ${
-                watchPaymentMethod === 'paystack'
-                  ? 'border-amber-600 bg-amber-50 ring-1 ring-amber-500'
-                  : 'border-gray-200 hover:border-gray-300'
+            <button
+              type="button"
+              onClick={() => {
+                setCurrency('USD')
+                setSelectedAmount(30)
+                setValue('amount', 30)
+              }}
+              className={`px-4 sm:px-5 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all ${
+                currency === 'USD'
+                  ? 'bg-white text-slate-950 shadow-sm'
+                  : 'text-slate-500 hover:text-slate-900'
               }`}
             >
-              <input
-                type="radio"
-                value="paystack"
-                {...register('paymentMethod')}
-                className="sr-only"
-              />
-              <CreditCard className="w-5 h-5 text-amber-600 flex-shrink-0" />
-              <div>
-                <p className="text-xs font-bold text-gray-900">Card & Mobile Money</p>
-                <p className="text-[10px] text-gray-500">Paystack Instant Checkout</p>
-              </div>
-            </label>
-
-            <label
-              className={`p-3.5 rounded-xl border-2 cursor-pointer transition-all flex items-center space-x-3 ${
-                watchPaymentMethod === 'momo_direct'
-                  ? 'border-amber-600 bg-amber-50 ring-1 ring-amber-500'
-                  : 'border-gray-200 hover:border-gray-300'
-              }`}
-            >
-              <input
-                type="radio"
-                value="momo_direct"
-                {...register('paymentMethod')}
-                className="sr-only"
-              />
-              <Smartphone className="w-5 h-5 text-amber-600 flex-shrink-0" />
-              <div>
-                <p className="text-xs font-bold text-gray-900">Direct MoMo Transfer</p>
-                <p className="text-[10px] text-gray-500">MTN / Telecel / AT Phone</p>
-              </div>
-            </label>
+              $ US Dollars (USD)
+            </button>
           </div>
         </div>
 
-        {/* Direct MoMo Info Box */}
-        {watchPaymentMethod === 'momo_direct' && (
-          <div className="bg-amber-50 border border-amber-200 rounded-lg p-5 text-xs text-amber-900 space-y-3">
-            <div className="flex items-center justify-between">
-              <span className="font-bold text-sm">Official MoMo Line:</span>
-              <button
-                type="button"
-                onClick={copyMomoNumber}
-                className="inline-flex items-center space-x-1 bg-amber-200/80 hover:bg-amber-300 text-amber-900 px-2.5 py-1 rounded font-medium text-[11px] transition-colors"
-              >
-                {copiedMomo ? <Check size={12} className="text-emerald-700" /> : <Copy size={12} />}
-                <span>{copiedMomo ? 'Copied' : 'Copy Number'}</span>
-              </button>
-            </div>
-            <div className="bg-white p-3 rounded-md border border-amber-200 flex items-center justify-between">
-              <span className="text-lg font-mono font-bold text-amber-950">
-                054 252 4571
-              </span>
-              <span className="text-[11px] text-gray-500">
-                Account: <strong>Strive Ghana</strong>
-              </span>
-            </div>
-            <p className="leading-relaxed text-[11px]">
-              Dial your provider code (*170# for MTN), choose Transfer Money, enter <strong>0542524571</strong>, and use reference <strong>Strive</strong>. Please message us on WhatsApp after sending so we can confirm receipt.
-            </p>
-          </div>
-        )}
-
-        {/* Accountability Note */}
-        <div className="p-3.5 bg-emerald-50 border border-emerald-200 rounded-lg flex items-center space-x-3 text-xs text-emerald-950">
-          <ShieldCheck size={18} className="text-emerald-700 flex-shrink-0" />
-          <p className="leading-relaxed">
-            <strong>Financial Accountability:</strong> 100% of your donation directly funds student materials, emergency convert assistance, and educational halaqat.
-          </p>
-        </div>
-
-        {/* Donor Information Inputs */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-6 sm:space-y-7">
+          {/* 1. Purpose / Donation Type */}
           <div>
-            <label className="block text-xs font-semibold text-gray-700 mb-1">
-              Your Full Name *
-            </label>
-            <input
-              type="text"
-              {...register('donorName', { required: 'Please enter your name' })}
-              className="w-full px-4 py-2.5 text-sm border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-transparent"
-              placeholder="e.g., Brother Ibrahim Mensah / Sister Aisha"
-            />
-            {errors.donorName && (
-              <p className="text-xs text-red-500 mt-1">{errors.donorName.message}</p>
-            )}
-          </div>
-
-          <div>
-            <label className="block text-xs font-semibold text-gray-700 mb-1">
-              Email Address *
-            </label>
-            <input
-              type="email"
-              {...register('email', {
-                required: 'Please enter your email',
-                pattern: {
-                  value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                  message: 'Invalid email address'
-                }
+            <div className="flex items-center space-x-2 mb-2.5">
+              <span className="w-5 h-5 rounded-full bg-amber-500/20 text-amber-900 text-xs font-black inline-flex items-center justify-center">1</span>
+              <label className="text-xs font-bold text-slate-800 uppercase tracking-wider">
+                Purpose of Donation *
+              </label>
+            </div>
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-2.5">
+              {[
+                { value: 'convert', label: 'New Converts', desc: 'Shahadah & kits' },
+                { value: 'orphan', label: 'Orphan Care', desc: 'Yateem food & aid' },
+                { value: 'zakat', label: 'Zakat (Alms)', desc: '100% direct relief' },
+                { value: 'sadaqat', label: 'Sadaqah', desc: 'General charity' }
+              ].map((type) => {
+                const isSelected = watchDonationType === type.value
+                return (
+                  <label
+                    key={type.value}
+                    className={`relative flex flex-col items-center justify-center p-3 sm:p-3.5 rounded-xl border-2 text-center cursor-pointer transition-all min-h-[58px] ${
+                      isSelected
+                        ? 'border-amber-500 bg-amber-50/80 text-amber-950 ring-2 ring-amber-400/80 shadow-xs'
+                        : 'border-slate-200 hover:border-slate-300 bg-white text-slate-700 hover:bg-slate-50/50'
+                    }`}
+                  >
+                    <input
+                      type="radio"
+                      value={type.value}
+                      {...register('donationType', { required: true })}
+                      className="sr-only"
+                    />
+                    <span className="text-xs font-bold block">{type.label}</span>
+                    <span className="text-[10px] text-slate-500 mt-0.5 hidden xs:block">{type.desc}</span>
+                    {isSelected && (
+                      <span className="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-amber-500" />
+                    )}
+                  </label>
+                )
               })}
-              className="w-full px-4 py-2.5 text-sm border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-transparent"
-              placeholder="e.g., ibrahim.mensah@gmail.com"
-            />
-            {errors.email && (
-              <p className="text-xs text-red-500 mt-1">{errors.email.message}</p>
-            )}
+            </div>
           </div>
-        </div>
 
-        {/* Phone for Paystack/Receipt */}
-        <div>
-          <label className="block text-xs font-semibold text-gray-700 mb-1">
-            Phone / WhatsApp Number (for receipt confirmation)
-          </label>
-          <input
-            type="tel"
-            {...register('phone')}
-            className="w-full px-4 py-2.5 text-sm border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-transparent"
-            placeholder="e.g. 0542524571"
-          />
-        </div>
+          {/* 2. Giving Frequency */}
+          <div>
+            <div className="flex items-center space-x-2 mb-2.5">
+              <span className="w-5 h-5 rounded-full bg-amber-500/20 text-amber-900 text-xs font-black inline-flex items-center justify-center">2</span>
+              <label className="text-xs font-bold text-slate-800 uppercase tracking-wider">
+                Giving Frequency *
+              </label>
+            </div>
+            <div className="grid grid-cols-1 xs:grid-cols-2 gap-2.5">
+              {[
+                { value: 'once', label: 'One-Time Gift', note: 'Single donation today' },
+                { value: 'monthly', label: 'Monthly Sponsorship', note: 'Continuous Sadaqah Jariyah 🌿' }
+              ].map((freq) => {
+                const isSelected = watchFrequency === freq.value
+                return (
+                  <label
+                    key={freq.value}
+                    className={`relative flex items-center justify-between p-3.5 rounded-xl border-2 cursor-pointer transition-all ${
+                      isSelected
+                        ? 'border-amber-500 bg-amber-50/80 text-amber-950 ring-2 ring-amber-400/80 shadow-xs'
+                        : 'border-slate-200 hover:border-slate-300 bg-white text-slate-700'
+                    }`}
+                  >
+                    <input
+                      type="radio"
+                      value={freq.value}
+                      {...register('frequency', { required: true })}
+                      className="sr-only"
+                    />
+                    <div>
+                      <span className="text-xs font-bold block text-slate-900">{freq.label}</span>
+                      <span className="text-[11px] text-slate-500 font-medium">{freq.note}</span>
+                    </div>
+                    <div className={`w-4 h-4 rounded-full border-2 flex items-center justify-center flex-shrink-0 ml-2 ${
+                      isSelected ? 'border-amber-600 bg-amber-600' : 'border-slate-300'
+                    }`}>
+                      {isSelected && <Check size={10} className="text-white stroke-[3]" />}
+                    </div>
+                  </label>
+                )
+              })}
+            </div>
+          </div>
 
-        {/* Optional Prayer or Dedication Note */}
-        <div>
-          <label className="block text-xs font-semibold text-gray-700 mb-1">
-            Prayer, Du'a, or Message of Support (Optional)
-          </label>
-          <textarea
-            rows={2}
-            {...register('message')}
-            className="w-full px-4 py-2 text-sm border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-transparent"
-            placeholder="May Allah bless this community..."
-          />
-        </div>
-
-        {/* Submit Actions */}
-        {watchPaymentMethod === 'momo_direct' ? (
-          <a
-            href={`https://wa.me/233542524571?text=${encodeURIComponent(
-              `Salam Alaykum! I am making a direct Mobile Money donation of ${currency === 'GHS' ? '₵' : '$'}${currentAmount} for ${watchDonationType}. My name is ${watchDonorName || 'Supporter'}.`
-            )}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-full py-4 bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold rounded-xl shadow-md shadow-amber-500/25 transition-all flex items-center justify-center space-x-2 text-base text-center"
-          >
-            <Smartphone size={20} className="fill-slate-950" />
-            <span>Confirm MoMo Transfer via WhatsApp</span>
-          </a>
-        ) : (
-          <button
-            type="submit"
-            disabled={isProcessing}
-            className="w-full py-4 bg-amber-500 hover:bg-amber-400 disabled:opacity-75 disabled:cursor-wait text-slate-950 font-bold rounded-xl shadow-md shadow-amber-500/25 transition-all flex items-center justify-center space-x-2 text-base"
-          >
-            {isProcessing ? (
-              <>
-                <Loader2 size={20} className="animate-spin text-slate-950" />
-                <span>Opening Paystack Checkout...</span>
-              </>
-            ) : (
-              <>
-                <Heart size={20} className="fill-slate-950" />
-                <span>
-                  Make Payment • {currency === 'GHS' ? '₵' : '$'}
-                  {currentAmount} {currency}
+          {/* 3. Amount Selection */}
+          <div>
+            <div className="flex items-center justify-between mb-2.5">
+              <div className="flex items-center space-x-2">
+                <span className="w-5 h-5 rounded-full bg-amber-500/20 text-amber-900 text-xs font-black inline-flex items-center justify-center">3</span>
+                <label className="text-xs font-bold text-slate-800 uppercase tracking-wider">
+                  Select Amount ({currency}) *
+                </label>
+              </div>
+              {watchFrequency === 'monthly' && (
+                <span className="text-[11px] text-amber-800 font-bold bg-amber-50 px-2 py-0.5 rounded-full border border-amber-200">
+                  {currency === 'GHS' ? '₵380/mo sponsors 1 orphan' : '$30/mo sponsors 1 orphan'}
                 </span>
-              </>
-            )}
-          </button>
-        )}
+              )}
+            </div>
 
-        {/* Status Confirmation */}
-        {submitStatus === 'success' && (
-          <div className="p-4 bg-emerald-50 border border-emerald-200 rounded-lg flex items-start space-x-3 text-emerald-900 text-sm">
-            <CheckCircle2 size={18} className="text-emerald-700 flex-shrink-0 mt-0.5" />
-            <div>
-              <p className="font-semibold">Thank you for your donation.</p>
-              <p className="text-xs text-emerald-800 mt-0.5">
-                Your payment reference has been recorded. May Allah reward you abundantly.
+            {/* Predefined Amounts Grid - Fully Unclipped & Fluid */}
+            <div className="grid grid-cols-2 gap-2.5 sm:gap-3.5 mb-3">
+              {amountsList.map((item) => {
+                const isSelected = selectedAmount === item.amount
+                return (
+                  <button
+                    key={item.amount}
+                    type="button"
+                    onClick={() => handleAmountSelect(item.amount)}
+                    className={`relative p-3 sm:p-4 rounded-xl border-2 text-left transition-all flex flex-col justify-between min-h-[88px] sm:min-h-[96px] ${
+                      isSelected
+                        ? 'border-amber-500 bg-amber-50/80 ring-2 ring-amber-400 shadow-sm'
+                        : 'border-slate-200 hover:border-amber-300 hover:bg-amber-50/20 bg-white text-slate-800'
+                    }`}
+                  >
+                    {item.badge && (
+                      <span className="absolute -top-2.5 right-2 sm:right-3 bg-amber-500 text-slate-950 font-black text-[9px] sm:text-[10px] uppercase tracking-wider px-2 py-0.5 rounded-full shadow-xs">
+                        {item.badge}
+                      </span>
+                    )}
+
+                    <div className="flex items-baseline justify-between w-full">
+                      <div className="font-black text-xl sm:text-2xl text-slate-950 font-heading">
+                        {item.label}
+                        {watchFrequency === 'monthly' && (
+                          <span className="text-xs font-normal text-slate-500 ml-0.5">/mo</span>
+                        )}
+                      </div>
+                      {isSelected && (
+                        <div className="w-4 h-4 rounded-full bg-amber-500 text-slate-950 flex items-center justify-center flex-shrink-0">
+                          <Check size={10} className="stroke-[3]" />
+                        </div>
+                      )}
+                    </div>
+
+                    {/* Unclipped description - Allows complete 2-line wrap on mobile */}
+                    <p className="text-[11px] sm:text-xs text-slate-600 mt-1 leading-snug break-words">
+                      {item.impact}
+                    </p>
+                  </button>
+                )
+              })}
+            </div>
+
+            {/* Custom Amount Field & Quick Increment Chips */}
+            <div className="p-3 bg-slate-50/80 rounded-xl border border-slate-200">
+              <div className="flex items-center space-x-2.5">
+                <button
+                  type="button"
+                  onClick={() => handleAmountSelect('custom')}
+                  className={`px-3.5 py-2 rounded-lg border text-xs font-bold transition-all whitespace-nowrap flex-shrink-0 ${
+                    selectedAmount === 'custom'
+                      ? 'border-amber-500 bg-amber-50 text-amber-950 ring-1 ring-amber-400'
+                      : 'border-slate-300 bg-white hover:border-amber-300 text-slate-700'
+                  }`}
+                >
+                  Custom Amount
+                </button>
+
+                <div className="relative flex-1">
+                  <span className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 font-bold text-sm">
+                    {currency === 'GHS' ? '₵' : '$'}
+                  </span>
+                  <input
+                    type="number"
+                    min="5"
+                    value={selectedAmount === 'custom' ? (watchCustomAmount || '') : ''}
+                    onFocus={() => handleAmountSelect('custom')}
+                    onChange={(e) => {
+                      const val = parseFloat(e.target.value) || 0
+                      setValue('customAmount', val)
+                      setValue('amount', val)
+                    }}
+                    placeholder={selectedAmount === 'custom' ? 'Enter amount' : 'Or type any custom gift'}
+                    className="w-full pl-8 pr-3 py-2 text-sm border border-slate-300 rounded-lg focus:ring-2 focus:ring-amber-500/30 focus:border-amber-500 bg-white"
+                  />
+                </div>
+              </div>
+
+              {selectedAmount === 'custom' && (
+                <div className="flex items-center gap-1.5 mt-2.5 pt-2 border-t border-slate-200/80 flex-wrap">
+                  <span className="text-[10px] font-semibold text-slate-500 uppercase tracking-wider mr-1">Quick Add:</span>
+                  {(currency === 'GHS' ? [50, 100, 200, 500] : [10, 25, 50, 100]).map((increment) => (
+                    <button
+                      key={increment}
+                      type="button"
+                      onClick={() => handleCustomAdd(increment)}
+                      className="px-2.5 py-1 rounded-md text-[11px] font-bold bg-white hover:bg-amber-100/70 border border-slate-200 hover:border-amber-300 text-slate-700 transition-colors"
+                    >
+                      +{currency === 'GHS' ? '₵' : '$'}{increment}
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
+          </div>
+
+          {/* 4. Payment Channel Tabs */}
+          <div>
+            <div className="flex items-center space-x-2 mb-2.5">
+              <span className="w-5 h-5 rounded-full bg-amber-500/20 text-amber-900 text-xs font-black inline-flex items-center justify-center">4</span>
+              <label className="text-xs font-bold text-slate-800 uppercase tracking-wider">
+                Choose How to Pay *
+              </label>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+              <label
+                className={`p-3.5 rounded-xl border-2 cursor-pointer transition-all flex items-center space-x-3 ${
+                  watchPaymentMethod === 'paystack'
+                    ? 'border-amber-500 bg-amber-50/80 ring-2 ring-amber-400/80 shadow-xs'
+                    : 'border-slate-200 hover:border-slate-300 bg-white'
+                }`}
+              >
+                <input
+                  type="radio"
+                  value="paystack"
+                  {...register('paymentMethod')}
+                  className="sr-only"
+                />
+                <div className="w-10 h-10 rounded-xl bg-amber-500/10 text-amber-700 flex items-center justify-center flex-shrink-0">
+                  <CreditCard className="w-5 h-5" />
+                </div>
+                <div className="min-w-0">
+                  <p className="text-xs font-bold text-slate-900">Card & Mobile Money</p>
+                  <p className="text-[11px] text-slate-500 truncate">MTN MoMo, Telecel, Card (Instant)</p>
+                </div>
+              </label>
+
+              <label
+                className={`p-3.5 rounded-xl border-2 cursor-pointer transition-all flex items-center space-x-3 ${
+                  watchPaymentMethod === 'momo_direct'
+                    ? 'border-amber-500 bg-amber-50/80 ring-2 ring-amber-400/80 shadow-xs'
+                    : 'border-slate-200 hover:border-slate-300 bg-white'
+                }`}
+              >
+                <input
+                  type="radio"
+                  value="momo_direct"
+                  {...register('paymentMethod')}
+                  className="sr-only"
+                />
+                <div className="w-10 h-10 rounded-xl bg-amber-500/10 text-amber-700 flex items-center justify-center flex-shrink-0">
+                  <Smartphone className="w-5 h-5" />
+                </div>
+                <div className="min-w-0">
+                  <p className="text-xs font-bold text-slate-900">Direct MoMo Transfer</p>
+                  <p className="text-[11px] text-slate-500 truncate">Send to 054 252 4571</p>
+                </div>
+              </label>
+            </div>
+          </div>
+
+          {/* Direct MoMo Info Box */}
+          {watchPaymentMethod === 'momo_direct' && (
+            <div className="bg-gradient-to-br from-amber-50 to-amber-100/60 border border-amber-300/80 rounded-2xl p-4 sm:p-5 text-xs text-amber-950 space-y-3 shadow-xs">
+              <div className="flex items-center justify-between">
+                <span className="font-bold text-sm text-slate-900">Official Mobile Money Line:</span>
+                <button
+                  type="button"
+                  onClick={copyMomoNumber}
+                  className="inline-flex items-center space-x-1 bg-amber-200/80 hover:bg-amber-300 text-amber-950 px-2.5 py-1 rounded-lg font-bold text-xs transition-colors shadow-xs"
+                >
+                  {copiedMomo ? <Check size={13} className="text-emerald-700 stroke-[3]" /> : <Copy size={13} />}
+                  <span>{copiedMomo ? 'Copied' : 'Copy Number'}</span>
+                </button>
+              </div>
+
+              <div className="bg-white p-3.5 rounded-xl border border-amber-300/60 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shadow-xs">
+                <div>
+                  <span className="text-xl font-mono font-black text-slate-950 block tracking-tight">
+                    054 252 4571
+                  </span>
+                  <span className="text-[11px] text-slate-500">
+                    Network: <strong>MTN MoMo / Telecel Cash</strong>
+                  </span>
+                </div>
+                <div className="text-left sm:text-right">
+                  <span className="inline-block bg-emerald-50 text-emerald-800 text-[11px] font-bold px-2 py-0.5 rounded-full border border-emerald-200">
+                    Account: Dr. Salis (Strive Ghana)
+                  </span>
+                </div>
+              </div>
+
+              <p className="leading-relaxed text-[11px] text-slate-700">
+                Dial your provider code (<strong>*170#</strong> for MTN), select <em>Transfer Money</em>, enter <strong>0542524571</strong>, and use reference <strong>Strive</strong>. Then click the button below to notify us via WhatsApp for instant receipt.
               </p>
             </div>
-          </div>
-        )}
+          )}
 
-        {/* Trust Badges */}
-        <div className="pt-4 border-t border-gray-100 flex items-center justify-between text-[11px] text-gray-500">
-          <span className="flex items-center">
-            <ShieldCheck size={14} className="text-emerald-600 mr-1" />
-            256-bit Encrypted SSL
-          </span>
-          <span>100% Zakat & Sadaqah Compliant</span>
-          <span>Ejisuman, Ghana</span>
-        </div>
-      </form>
-    </motion.div>
-  </>
+          {/* Accountability Assurance Banner */}
+          <div className="p-3.5 bg-emerald-50/90 border border-emerald-200/80 rounded-xl flex items-center space-x-3 text-xs text-emerald-950">
+            <ShieldCheck size={20} className="text-emerald-700 flex-shrink-0" />
+            <p className="leading-relaxed text-[11px] sm:text-xs text-emerald-900">
+              <strong>100% Zakat & Sadaqah Policy:</strong> Zero public administrative fee deductions. 100% of your funds directly buy Qurans, feed orphans, and support new converts.
+            </p>
+          </div>
+
+          {/* 5. Donor Information Inputs */}
+          <div>
+            <div className="flex items-center space-x-2 mb-2.5">
+              <span className="w-5 h-5 rounded-full bg-amber-500/20 text-amber-900 text-xs font-black inline-flex items-center justify-center">5</span>
+              <label className="text-xs font-bold text-slate-800 uppercase tracking-wider">
+                Donor Information
+              </label>
+            </div>
+
+            <div className="space-y-3 sm:space-y-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div>
+                  <label className="block text-xs font-bold text-slate-700 mb-1">
+                    Your Full Name *
+                  </label>
+                  <input
+                    type="text"
+                    {...register('donorName', { required: 'Please enter your name' })}
+                    className="w-full px-3.5 py-2.5 text-sm border border-slate-300 rounded-xl focus:ring-2 focus:ring-amber-500/30 focus:border-amber-500"
+                    placeholder="e.g. Ibrahim Mensah / Sister Aisha"
+                  />
+                  {errors.donorName && (
+                    <p className="text-xs text-red-500 mt-1 font-medium">{errors.donorName.message}</p>
+                  )}
+                </div>
+
+                <div>
+                  <label className="block text-xs font-bold text-slate-700 mb-1">
+                    Email Address *
+                  </label>
+                  <input
+                    type="email"
+                    {...register('email', {
+                      required: 'Please enter your email',
+                      pattern: {
+                        value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                        message: 'Invalid email address'
+                      }
+                    })}
+                    className="w-full px-3.5 py-2.5 text-sm border border-slate-300 rounded-xl focus:ring-2 focus:ring-amber-500/30 focus:border-amber-500"
+                    placeholder="e.g. ibrahim.mensah@gmail.com"
+                  />
+                  {errors.email && (
+                    <p className="text-xs text-red-500 mt-1 font-medium">{errors.email.message}</p>
+                  )}
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-xs font-bold text-slate-700 mb-1">
+                  Phone / WhatsApp Number (for receipt confirmation)
+                </label>
+                <input
+                  type="tel"
+                  {...register('phone')}
+                  className="w-full px-3.5 py-2.5 text-sm border border-slate-300 rounded-xl focus:ring-2 focus:ring-amber-500/30 focus:border-amber-500"
+                  placeholder="e.g. 054 252 4571"
+                />
+              </div>
+
+              <div>
+                <label className="block text-xs font-bold text-slate-700 mb-1">
+                  Prayer, Du'a, or Dedication Note (Optional)
+                </label>
+                <textarea
+                  rows={2}
+                  {...register('message')}
+                  className="w-full px-3.5 py-2 text-sm border border-slate-300 rounded-xl focus:ring-2 focus:ring-amber-500/30 focus:border-amber-500"
+                  placeholder="May Allah accept from us and bless the youth in Ejisuman..."
+                />
+              </div>
+            </div>
+          </div>
+
+          {/* Submit Actions */}
+          {watchPaymentMethod === 'momo_direct' ? (
+            <a
+              href={`https://wa.me/233542524571?text=${encodeURIComponent(
+                `Salam Alaykum! I am making a direct Mobile Money donation of ${currency === 'GHS' ? '₵' : '$'}${currentAmount} for ${watchDonationType}. My name is ${watchDonorName || 'Supporter'}.`
+              )}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full py-4 px-6 bg-amber-500 hover:bg-amber-400 text-slate-950 font-black rounded-xl shadow-lg shadow-amber-500/30 transition-all flex items-center justify-center space-x-2 text-base text-center active:scale-[0.99]"
+            >
+              <Smartphone size={20} className="fill-slate-950 flex-shrink-0" />
+              <span>Confirm MoMo Transfer on WhatsApp</span>
+            </a>
+          ) : (
+            <button
+              type="submit"
+              disabled={isProcessing}
+              className="w-full py-4 px-6 bg-amber-500 hover:bg-amber-400 disabled:opacity-75 disabled:cursor-wait text-slate-950 font-black rounded-xl shadow-lg shadow-amber-500/30 transition-all flex items-center justify-center space-x-2 text-base active:scale-[0.99]"
+            >
+              {isProcessing ? (
+                <>
+                  <Loader2 size={20} className="animate-spin text-slate-950 flex-shrink-0" />
+                  <span>Opening Paystack Checkout...</span>
+                </>
+              ) : (
+                <>
+                  <Heart size={20} className="fill-slate-950 flex-shrink-0" />
+                  <span>
+                    Donate {currency === 'GHS' ? '₵' : '$'}{currentAmount} {currency} Now
+                  </span>
+                </>
+              )}
+            </button>
+          )}
+
+          {/* Status Confirmation */}
+          {submitStatus === 'success' && (
+            <div className="p-4 bg-emerald-50 border border-emerald-200 rounded-xl flex items-start space-x-3 text-emerald-900 text-sm">
+              <CheckCircle2 size={20} className="text-emerald-700 flex-shrink-0 mt-0.5" />
+              <div>
+                <p className="font-bold">Thank you for your generous gift!</p>
+                <p className="text-xs text-emerald-800 mt-0.5">
+                  Your donation reference has been recorded. May Allah reward you abundantly and multiply your blessing.
+                </p>
+              </div>
+            </div>
+          )}
+
+          {/* Trust Badges Footer */}
+          <div className="pt-4 border-t border-slate-100 flex flex-wrap items-center justify-between gap-2 text-[11px] text-slate-500">
+            <span className="flex items-center">
+              <ShieldCheck size={14} className="text-emerald-600 mr-1 flex-shrink-0" />
+              256-Bit SSL Encrypted
+            </span>
+            <span>100% Zakat & Sadaqah Compliant</span>
+            <span>Ejisuman, Ashanti Region</span>
+          </div>
+        </form>
+      </motion.div>
+    </>
   )
 }
 
 export default function DonationForm() {
   return (
     <Suspense fallback={
-      <div className="bg-white rounded-3xl p-8 text-center border border-gray-100 shadow-sm text-gray-500 text-sm">
-        <Heart className="w-8 h-8 text-accent-gold mx-auto animate-pulse mb-2" />
+      <div className="bg-white rounded-3xl p-8 text-center border border-slate-100 shadow-sm text-slate-500 text-sm">
+        <Heart className="w-8 h-8 text-amber-500 mx-auto animate-pulse mb-2" />
         <p>Loading secure donation portal...</p>
       </div>
     }>

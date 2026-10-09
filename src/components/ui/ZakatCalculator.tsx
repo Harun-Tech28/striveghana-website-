@@ -32,30 +32,30 @@ export default function ZakatCalculator() {
   }
 
   return (
-    <div className="bg-white rounded-lg border border-gray-200 overflow-hidden shadow-xs" id="zakat-calculator">
+    <div className="bg-white rounded-2xl sm:rounded-3xl border border-slate-200/90 overflow-hidden shadow-sm" id="zakat-calculator">
       {/* Header Bar */}
-      <div className="bg-slate-950 p-5 sm:p-6 text-white border-b border-slate-800">
+      <div className="bg-slate-950 p-4 sm:p-6 text-white border-b border-slate-800">
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
           <div>
-            <span className="text-xs sm:text-sm font-semibold text-amber-400 uppercase tracking-wider block mb-1">
+            <span className="text-xs font-bold text-amber-400 uppercase tracking-wider block mb-1">
               Annual 2.5% Calculation
             </span>
-            <h3 className="text-xl sm:text-2xl font-bold font-heading text-white">
+            <h3 className="text-xl sm:text-2xl font-black font-heading text-white">
               Zakat Calculator
             </h3>
-            <p className="text-sm text-slate-300 mt-1 max-w-xl">
-              Calculate your annual Zakat obligation according to Islamic guidelines.
+            <p className="text-xs sm:text-sm text-slate-300 mt-1 max-w-xl">
+              Calculate your annual Zakat obligation according to authentic Islamic guidelines.
             </p>
           </div>
 
           {/* Currency Selector */}
-          <div className="flex items-center bg-slate-900 p-1 rounded-xl border border-slate-800">
+          <div className="flex items-center bg-slate-900 p-1 rounded-xl border border-slate-800 flex-shrink-0">
             <button
               type="button"
               onClick={() => setCurrency('GHS')}
-              className={`px-3 py-1 rounded-lg text-xs font-semibold transition-colors ${
+              className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${
                 currency === 'GHS' 
-                  ? 'bg-amber-500 text-slate-950 font-bold' 
+                  ? 'bg-amber-500 text-slate-950 shadow-xs' 
                   : 'text-slate-300 hover:text-white'
               }`}
             >
@@ -64,10 +64,10 @@ export default function ZakatCalculator() {
             <button
               type="button"
               onClick={() => setCurrency('USD')}
-              className={`px-3 py-1 rounded text-xs font-medium transition-colors ${
+              className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${
                 currency === 'USD' 
-                  ? 'bg-accent-gold text-gray-900 font-bold' 
-                  : 'text-gray-300 hover:text-white'
+                  ? 'bg-amber-500 text-slate-950 shadow-xs' 
+                  : 'text-slate-300 hover:text-white'
               }`}
             >
               $ (USD)
@@ -77,7 +77,7 @@ export default function ZakatCalculator() {
       </div>
 
       {/* Calculator Body */}
-      <div className="p-6 sm:p-8 grid grid-cols-1 lg:grid-cols-12 gap-8">
+      <div className="p-4 sm:p-6 md:p-8 grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8">
         
         {/* Input Fields Column (7 cols) */}
         <div className="lg:col-span-7 space-y-4">
@@ -285,15 +285,15 @@ export default function ZakatCalculator() {
               href={zakatPayable > 0 
                 ? `/donate?amount=${zakatPayable}&purpose=zakat&currency=${currency}#donate-form` 
                 : '/donate?purpose=zakat#donate-form'}
-              className="w-full inline-flex items-center justify-center space-x-1.5 py-2.5 px-4 bg-primary-700 hover:bg-primary-800 text-white font-medium text-xs rounded-md transition-colors text-center"
+              className="w-full inline-flex items-center justify-center space-x-2 py-3.5 px-4 bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-xs sm:text-sm rounded-xl transition-all shadow-md shadow-amber-500/25 active:scale-[0.99] text-center"
             >
-              <Heart size={14} className="fill-white" />
+              <Heart size={16} className="fill-slate-950" />
               <span>
                 {zakatPayable > 0 
-                  ? `Pay ${currency === 'GHS' ? 'GH₵' : '$'}${zakatPayable} Zakat` 
-                  : 'Fulfill Zakat Online'}
+                  ? `Pay ${currency === 'GHS' ? 'GH₵' : '$'}${zakatPayable.toLocaleString()} Zakat Online` 
+                  : 'Fulfill Zakat with Strive'}
               </span>
-              <ArrowRight size={13} />
+              <ArrowRight size={15} />
             </Link>
           </div>
         </div>
