@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { Heart, ArrowRight } from 'lucide-react'
 
 interface HeroProps {
@@ -32,20 +33,26 @@ const Hero = ({
 
   return (
     <section className="relative min-h-[540px] sm:min-h-[640px] lg:min-h-[720px] bg-slate-950 text-white py-10 sm:py-20 lg:py-28 overflow-hidden flex items-center border-b border-gray-800">
-      {/* 1. Large, Clear Full-Width Background Image */}
-      <div 
-        className="absolute inset-0 w-full h-full bg-cover bg-center lg:bg-[center_right] pointer-events-none z-0"
-        style={{ backgroundImage: `url('${backgroundImage}')` }}
-        aria-hidden="true"
-      />
+      {/* 1. Large, Crystal-Clear Full-Width Background Image */}
+      <div className="absolute inset-0 w-full h-full pointer-events-none z-0 overflow-hidden">
+        <Image
+          src={backgroundImage}
+          alt="Strive Ghana community"
+          fill
+          priority
+          quality={95}
+          sizes="100vw"
+          className="object-cover object-[58%_center] sm:object-center lg:object-right"
+        />
+      </div>
 
-      {/* 2. Professional Contrast Gradient */}
+      {/* 2. Professional, Balanced Contrast Overlays - Clear and bright, never dark or muddy */}
       <div 
-        className="absolute inset-0 bg-gradient-to-r from-slate-950/95 via-slate-950/80 to-slate-900/40 sm:via-slate-950/65 sm:to-transparent pointer-events-none z-1" 
+        className="absolute inset-0 bg-gradient-to-r from-slate-950/85 via-slate-950/50 to-slate-950/20 sm:from-slate-950/90 sm:via-slate-950/50 sm:to-transparent pointer-events-none z-[1]" 
         aria-hidden="true"
       />
       <div 
-        className="absolute inset-0 bg-gradient-to-t from-slate-950/95 via-transparent to-slate-950/40 pointer-events-none z-1"
+        className="absolute inset-0 bg-gradient-to-t from-slate-950/75 via-transparent to-slate-950/25 pointer-events-none z-[1]"
         aria-hidden="true"
       />
 
@@ -58,7 +65,7 @@ const Hero = ({
             <div className="space-y-4 sm:space-y-7">
               
               {/* Location Badge */}
-              <div className="inline-flex items-center space-x-2 text-[11px] sm:text-sm font-bold tracking-wider text-amber-300 uppercase px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/15">
+              <div className="inline-flex items-center space-x-2 text-[11px] sm:text-sm font-bold tracking-wider text-amber-300 uppercase px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full bg-slate-900/80 border border-white/20 shadow-xs">
                 <span>Ejisuman, Ashanti Region</span>
                 <span className="text-amber-400">•</span>
                 <span>Est. 2024</span>
@@ -67,15 +74,15 @@ const Hero = ({
               {/* Main Headline & Arabic Calligraphy */}
               <div className="space-y-2 sm:space-y-4">
                 <div className="flex flex-wrap items-baseline gap-2 sm:gap-4">
-                  <h1 className="text-3xl sm:text-5xl lg:text-7xl font-black font-heading tracking-tight text-white leading-[1.1] break-words">
+                  <h1 className="text-3xl sm:text-5xl lg:text-7xl font-black font-heading tracking-tight text-white leading-[1.1] break-words drop-shadow-md">
                     {cleanTitle || 'STRIVE'}
                   </h1>
-                  <span className="font-arabic text-3xl sm:text-4xl lg:text-6xl text-amber-300 font-bold drop-shadow-sm">
+                  <span className="font-arabic text-3xl sm:text-4xl lg:text-6xl text-amber-300 font-bold drop-shadow-md">
                     السعي
                   </span>
                 </div>
 
-                <p className="text-base sm:text-2xl lg:text-3xl font-bold text-amber-100/95 leading-snug">
+                <p className="text-base sm:text-2xl lg:text-3xl font-bold text-amber-100/95 leading-snug drop-shadow-sm">
                   {subtitle}
                 </p>
               </div>
@@ -96,7 +103,7 @@ const Hero = ({
                     className={`w-full sm:w-auto px-6 py-3.5 sm:px-8 sm:py-4.5 rounded-xl sm:rounded-2xl font-bold text-sm sm:text-lg transition-all duration-200 flex items-center justify-center space-x-2 shadow-lg ${
                       btn.variant === 'primary'
                         ? 'bg-amber-500 hover:bg-amber-400 text-slate-950 shadow-amber-500/25 hover:-translate-y-0.5'
-                        : 'bg-white/15 hover:bg-white/25 text-white border border-white/30 backdrop-blur-sm hover:-translate-y-0.5'
+                        : 'bg-slate-900/70 hover:bg-slate-900/90 text-white border border-white/30 hover:-translate-y-0.5'
                     }`}
                   >
                     {btn.variant === 'primary' && <Heart size={18} className="fill-slate-950 flex-shrink-0" />}
@@ -108,19 +115,19 @@ const Hero = ({
 
               {/* Community Impact Row */}
               <div className="pt-4 sm:pt-7 border-t border-white/15 grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-4 text-left">
-                <div className="p-3 sm:p-4 rounded-xl bg-white/10 backdrop-blur-md border border-white/15">
+                <div className="p-3 sm:p-4 rounded-xl bg-slate-900/80 sm:bg-slate-900/70 border border-white/15 shadow-sm">
                   <p className="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-amber-300 font-heading">35+</p>
                   <p className="text-[11px] sm:text-sm font-semibold text-slate-200 mt-0.5 sm:mt-1">Converts & orphans</p>
                 </div>
-                <div className="p-3 sm:p-4 rounded-xl bg-white/10 backdrop-blur-md border border-white/15">
+                <div className="p-3 sm:p-4 rounded-xl bg-slate-900/80 sm:bg-slate-900/70 border border-white/15 shadow-sm">
                   <p className="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-amber-300 font-heading">15</p>
                   <p className="text-[11px] sm:text-sm font-semibold text-slate-200 mt-0.5 sm:mt-1">Active mentors</p>
                 </div>
-                <div className="p-3 sm:p-4 rounded-xl bg-white/10 backdrop-blur-md border border-white/15">
+                <div className="p-3 sm:p-4 rounded-xl bg-slate-900/80 sm:bg-slate-900/70 border border-white/15 shadow-sm">
                   <p className="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-amber-300 font-heading">4</p>
                   <p className="text-[11px] sm:text-sm font-semibold text-slate-200 mt-0.5 sm:mt-1">Weekly tracks</p>
                 </div>
-                <div className="p-3 sm:p-4 rounded-xl bg-white/10 backdrop-blur-md border border-white/15">
+                <div className="p-3 sm:p-4 rounded-xl bg-slate-900/80 sm:bg-slate-900/70 border border-white/15 shadow-sm">
                   <p className="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-amber-300 font-heading">Ejisu</p>
                   <p className="text-[11px] sm:text-sm font-semibold text-slate-200 mt-0.5 sm:mt-1">Sanctuary center</p>
                 </div>
